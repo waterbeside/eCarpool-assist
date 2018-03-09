@@ -1,0 +1,131 @@
+
+
+@import "cp_base.less";
+
+.cp-all { /*background: rgba(255,255,255,.9);*/ }
+.cp-all-bg { position:absolute; z-index: -1; left: 0; right:0; top:0; bottom:0; height: 100%;background: url(/c/images/r_bg.jpg) center; background-size: cover;}
+.cp-all-bg-2 { position:absolute; z-index: -1; left: 0; right:0; top:0; bottom:0;   background-image: linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.65)); opacity: 1}
+input[type="checkbox"]{
+    /* width: 40px; */
+    /* height: 40px; */
+    /* -webkit-border-radius: 50%; */
+    display: none;
+}
+input[type="checkbox"]+label {
+    display: inline-block;
+    // width: 48%;
+    margin-top: 10px;
+    margin-left: 5px;
+    text-align: left;
+    -webkit-box-sizing: border-box;
+}
+
+label.label-checkbox::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: #eee;
+    border:1px solid #999;
+    vertical-align: middle;
+    // -webkit-border-radius: 50%;
+    margin-right: 15px;
+    -webkit-box-sizing:border-box;
+  -webkit-transition:background ease-in .2s
+}
+
+input[type="checkbox"]:checked+label::before{
+      background-color: rgb(53, 183, 111);
+    border: 3px #eee solid; box-shadow: 0 0 2px rgba(0,0,0,.9)
+}
+
+.weui-cells_radio .weui-check__label {
+  margin-bottom: 0;
+  p { margin-bottom: 0}
+}
+
+
+/* 输入框 */
+.form-control-line, .form-group .form-control-line { padding-left: 5px;
+  border: 0;
+  // background-image: linear-gradient(#59488d, #59488d), linear-gradient(#aaaaaa, #aaaaaa);
+  background-image: linear-gradient(#59488d, #59488d), linear-gradient(#D2D2D2, #D2D2D2);
+  background-size: 0 2px, 100% 1px;
+  background-repeat: no-repeat;
+  background-position: center bottom, center calc(100% - 1px);
+  background-color: transparent;
+  transition: background 1s ease-out;
+  float: none;
+  box-shadow: none;
+  border-radius: 0;
+  font-weight: 400;
+  &:focus {  box-shadow: none; border:none;
+    background-image:linear-gradient(@color-primary, @color-primary),linear-gradient(@color-primary, @color-primary);
+  }
+  // &:active { }
+}
+
+/*输入框组*/
+.cp-form-group { position: relative;
+  label.control-label {  position: absolute; left:3px; top: 13px;font-size: 16px;
+    i.fa { color:#aaa;/* color:rgb(230, 136, 127)*/}
+    svg {fill:#aaa;  height: 21px; margin-top: 2px;}
+  }
+  input.form-control {transition: all .8s; padding-left: 30px;}
+
+}
+
+
+.page-view-register {
+  background: #f8f8f8 url('../images/login-bg.png') repeat;
+
+  .cp-heading { text-align: center; margin:20px 0 50px;}
+  .cp-avatar { width: 14px; height: 14px; border-radius: 50%; vertical-align: middle;}
+  .cp-inviter { font-weight: 300}
+  .cp-step { margin: 20px 0;}
+  .vux-step-item-title { font-size: 12px;}
+  .vux-step-item-head .vux-step-item-head-inner { width: 24px; height: 24px; line-height: 23px;  }
+  .vux-step-item-main { margin-left: 1px; padding: 0 10px 0 3px;}
+  .vux-cell-primary {flex:none;}
+  .weui-cell__ft {
+    margin-left: 24px; font-size: 16px; padding-top: 4px;
+    .vux-cell-placeholder { color: #999;}
+    .vux-cell-value { color: #444}
+  }
+
+  .cp-register-wrapper {
+    position: relative;  width: auto; margin: 0 auto;
+    button[type="submit"] { width:100%; margin-top:20px}
+    //  animation: cp-login-in .5s linear 1;
+    padding-top: 20px;
+    .cp-form-wrap {  padding: 20px 16px 10px;  background: rgba(255,255,255,1); margin: 0 10px; border:1px solid #DDD; box-shadow: 0 0 20px rgba(0,0,0,.1); border-radius: 5px;
+      .form-control {
+        padding: 12px 10px 12px 40px; height:50px; border-radius: 0; font-size: 16px;
+      }
+      .cp-select {border-bottom : 1px solid #ccc;
+        &::before { border-top: none}
+      }
+      label.control-label { min-width: 20px; text-align: center;font-size: 18px; }
+      .cp-register {padding-top: 10px; text-align: right; margin: 0}
+    }
+    .btn-sendsms { position: absolute;   right:0; top:10px;}
+    .cp-tips-disclaimer { height: 40px; line-height: 40px; padding-top: 10px; margin-left: -2px;
+      .vux-check-icon > span {color: #666;}
+    }
+    .cp-disclaimer-link { text-decoration: underline; font-weight: 700;}
+  }
+
+  .cp-submitbtn-wrapper {
+    margin-top: 20px;
+    .J-btn-submit { margin-bottom: 10px;}
+  }
+  .cp-login-btn { position: absolute; right: 28px; bottom: -30px;}
+
+  @media (min-width: 768px){
+    .cp-login-wrap, .cp-register-wrapper {
+       width: 450px;   padding-top: 12%; margin: 0 auto;
+       label.control-label {   top:7px;}
+       .cp-form-wrap {border-radius: 4px;}
+    }
+  }
+}
