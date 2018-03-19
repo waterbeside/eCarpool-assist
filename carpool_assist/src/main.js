@@ -8,8 +8,9 @@ import axios from 'axios';
 import qs from 'qs';
 import { focus } from 'vue-focus';
 
-import {ViewBox,Countdown,CheckIcon,Spinner,Step,StepItem,ButtonTab, ButtonTabItem,ConfirmPlugin,ToastPlugin,Popup,PopupRadio,Loading,InlineLoading,Msg,Qrcode  } from 'vux'
 
+
+import {ViewBox,Countdown,CheckIcon,Spinner,Step,StepItem,ToastPlugin,Popup,PopupRadio,Msg,Qrcode  } from 'vux'
 
 import config from './configs/index'
 
@@ -19,7 +20,7 @@ import config from './configs/index'
 
 
 Vue.component('ViewBox', ViewBox)
-Vue.component('Loading', Loading)
+// Vue.component('Loading', Loading)
 Vue.component('Countdown', Countdown)
 Vue.component('CheckIcon', CheckIcon)
 Vue.component('Popup', Popup)
@@ -30,13 +31,11 @@ Vue.component('Qrcode', Qrcode)
 Vue.component('Spinner', Spinner)
 Vue.component('Step', Step)
 Vue.component('StepItem', StepItem)
-Vue.component('ButtonTab', ButtonTab)
-Vue.component('ButtonTabItem', ButtonTabItem)
+
 
 Vue.directive('focus', focus);
 
 Vue.use(ToastPlugin);;
-Vue.use(ConfirmPlugin);
 
 
 
@@ -64,6 +63,5 @@ new Vue({
   components: { App }
 })
 
-import "./assets/styles/font-awesome.min.css";
 import "./assets/styles/bootstrap/bootstrap.less";
 import "./assets/styles/style_assist.less";
