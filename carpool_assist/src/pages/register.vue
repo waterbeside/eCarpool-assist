@@ -72,8 +72,7 @@
                   </div>
                   <div class="cp-form-group ">
                     <label  class="control-label "  for="sexs"><i class="fa fa-venus-mars"></i> </label>
-                    <popup-radio class="cp-select" title="" :options="sexs" v-model="formData.sex" placeholder="性别">
-                    </popup-radio>
+                    <popup-radio class="cp-select" title="" :options="sexs" v-model="formData.sex" placeholder="性别"></popup-radio>
                     <!-- <input type="text" class="form-control form-control-line  " name="conpany" placeholder="" v-model="formData.conpany"> -->
                   </div>
                   <div class="cp-form-group ">
@@ -83,17 +82,17 @@
                     <!-- <input type="text" class="form-control form-control-line  " name="conpany" placeholder="" v-model="formData.conpany"> -->
                   </div>
 
-                  <div class="cp-form-group ">
+                  <!--<div class="cp-form-group ">
                     <label  class="control-label "  for="loginname"><i class="fa fa-id-card"></i> </label>
                     <input type="text" class="form-control form-control-line  " name="loginname" placeholder="填写帐号名/工号" v-model="formData.loginname">
-                  </div>
+                  </div>-->
 
                 </div>
                 <!-- /step:1 -->
                 <!-- step:2 -->
                 <div class="cp-step-item cp-step-item-1" v-show="step==2">
                   <div class="alert alert-default">
-                    <p>
+                    <p style="padding-bottom:20px">
                       你已注册成为《溢起拼车》的一份子，快来下载APP，来免费拼车吧！
                     </p>
                     <qrcode value="http://m.esquel.cn/apps/gek/Carpool/" type="img" style=" text-align:center" :size="120"></qrcode>
@@ -178,7 +177,7 @@ export default {
         phone:'',
         password:'',
         code:'',
-        loginname:'',
+        // loginname:'',
         name:'',
       },
       confirm_password:'',
@@ -217,7 +216,8 @@ export default {
           return !this.agree || this.formData.phone.trim() == "" ||  this.formData.password.trim() == "" || this.formData.code.trim()=="" || this.confirm_password.trim()=="" ? false :true;
           break;
         case 1:
-          return  this.formData.name.trim() == "" ||  this.formData.loginname.trim() == "" || this.formData.sex =="" || this.formData.company_id =="" ? false :true;
+        // return  this.formData.name.trim() == "" ||  this.formData.loginname.trim() == "" || this.formData.sex =="" || this.formData.company_id =="" ? false :true;
+          return  this.formData.name.trim() == "" ||   this.formData.sex =="" || this.formData.company_id =="" ? false :true;
           break;
         default:
           return false;
@@ -278,8 +278,7 @@ export default {
         }else if(res.data.code === 10006){
           this.$vux.toast.text('用户名/工号，已被占用');
         }else {
-          this.$vux.toast.text('网络不畅通，请稍候在试');
-
+          this.$vux.toast.text(res.data.code);
         }
       })
       .catch(error => {
