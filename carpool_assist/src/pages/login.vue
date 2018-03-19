@@ -117,7 +117,7 @@ export default {
       link_code:'', //连接邀请码
       step:0, //第几步
       status:0,
-      //免责专用明相关
+      //免责声明相关
       isShowDisclaimer:false,
       disclaimerContent:'',
       isLoadingDisclaimer:true,
@@ -127,17 +127,14 @@ export default {
       inviter:{name:'',avatar:config.defaultAvatar}, //邀请者数据
       defaultAvatar: config.defaultAvatar, //默认头像
 
-      phone_ok:'',//验证成功后的手机号
       //要提交的表单数据
       formData:{
         username:'',
         loginname:'',
       },
-      confirm_password:'',
 
       //用于focus到input框
       isFocus:{
-
         username:false,
         password:false,
       },
