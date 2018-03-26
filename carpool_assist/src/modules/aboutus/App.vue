@@ -18,7 +18,7 @@
 
 <script>
 const sessionHistory = window.sessionStorage
-import config from './configs/index'
+import config from '../../configs'
 export default {
   name: 'app',
   data () {

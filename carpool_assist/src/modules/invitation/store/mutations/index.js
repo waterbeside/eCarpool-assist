@@ -3,7 +3,7 @@
 
 import store from '../'
 
-import config from '../../configs'
+import config from '../../../../configs'
 
 export default {
   //设置用户详细数据

@@ -104,7 +104,7 @@
 </template>
 
 <script>
-import config from '../configs'
+import config from '../../../configs'
 
 export default {
   components: {

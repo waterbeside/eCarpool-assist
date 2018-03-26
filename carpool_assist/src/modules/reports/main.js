@@ -1,18 +1,18 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import "../../assets/styles/bootstrap/bootstrap.less";
+
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import store from './store'
 import axios from 'axios';
 import qs from 'qs';
-import { focus } from 'vue-focus';
 
 
 
-import {ViewBox,Countdown,CheckIcon,Spinner,Step,StepItem,ToastPlugin,Popup,PopupRadio,Msg,Qrcode  } from 'vux'
+import {ViewBox,ToastPlugin  } from 'vux'
 
-import config from './configs/index'
+import config from '../../configs/index'
 
 
 // 全局注册vux的组件
@@ -20,20 +20,7 @@ import config from './configs/index'
 
 
 Vue.component('ViewBox', ViewBox)
-// Vue.component('Loading', Loading)
-Vue.component('Countdown', Countdown)
-Vue.component('CheckIcon', CheckIcon)
-Vue.component('Popup', Popup)
-Vue.component('PopupRadio', PopupRadio)
-Vue.component('Msg', Msg)
-Vue.component('Qrcode', Qrcode)
 
-Vue.component('Spinner', Spinner)
-Vue.component('Step', Step)
-Vue.component('StepItem', StepItem)
-
-
-Vue.directive('focus', focus);
 
 Vue.use(ToastPlugin);;
 
@@ -58,10 +45,6 @@ Vue.prototype.$http = axios;
 new Vue({
   el: '#app',
   router,
-  store,
   template: '<App/>',
   components: { App }
 })
-
-import "./assets/styles/bootstrap/bootstrap.less";
-import "./assets/styles/style_assist.less";
