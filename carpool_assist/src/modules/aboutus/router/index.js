@@ -20,6 +20,16 @@ const routes = [
     },
     meta: {keepAlive: true }
   },
+
+  // 应用下载
+  {
+    path: '/qcode',
+    name: 'qcode',
+    component (resolve) {
+      require(['../pages/qcode'], resolve)
+    },
+    meta: {keepAlive: true }
+  },
 ]
 
 let router = new VueRouter({
