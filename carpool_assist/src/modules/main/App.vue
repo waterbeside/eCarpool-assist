@@ -11,13 +11,11 @@
           <router-view v-if="!$route.meta.keepAlive"></router-view>
         </template>
       </transition>
-      <loading :show="isLoading" :text="loadingText"></loading>
     </div>
   </div>
 </template>
 
 <script>
-const sessionHistory = window.sessionStorage
 import config from '../../configs'
 export default {
   name: 'app',
@@ -27,13 +25,8 @@ export default {
     }
   },
   computed: {
-      isLoading () {
-        return this.$store.state.loading.isShow
-      },
-      loadingText () {
-        return this.$store.state.loading.text
-      }
-    },
+
+  },
 
   watch: {
     // 更新页面所在位置，用于判断是前进页还是后退页
@@ -45,7 +38,6 @@ export default {
         this.transitionName = 'backward'
         return;
       }
-
 
       this.transitionName = toDepth < fromDepth ? 'backward' : toDepth == fromDepth ? '' :'forward'
     }

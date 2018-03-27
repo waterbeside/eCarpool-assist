@@ -14,7 +14,7 @@ import { focus } from 'vue-focus';
 
 import {ViewBox  } from 'vux'
 
-import config from '../../configs/index'
+import config from '../../configs'
 
 
 // 全局注册vux的组件

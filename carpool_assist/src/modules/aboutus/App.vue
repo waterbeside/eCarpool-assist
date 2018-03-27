@@ -8,10 +8,9 @@
           </keep-alive>
         </template>
         <template v-else>
-          <router-view v-if="!$route.meta.keepAlive"></router-view>
+          <router-view ></router-view>
         </template>
       </transition>
-      <loading :show="isLoading" :text="loadingText"></loading>
     </div>
   </div>
 </template>
@@ -27,12 +26,7 @@ export default {
     }
   },
   computed: {
-      isLoading () {
-        return this.$store.state.loading.isShow
-      },
-      loadingText () {
-        return this.$store.state.loading.text
-      }
+
     },
 
   watch: {
