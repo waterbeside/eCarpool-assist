@@ -8,7 +8,7 @@ import router from './router'
 
 import {ViewBox,ToastPlugin  } from 'vux'
 
-import config from '../../configs/index'
+import config from '../../configs'
 
 
 // 全局注册vux的组件
@@ -24,7 +24,7 @@ Vue.use(ToastPlugin);;
 
 
 // Vue.config.productionTip = false
- 
+
 
 /* eslint-disable no-new */
 new Vue({

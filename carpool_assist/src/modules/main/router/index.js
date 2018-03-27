@@ -9,20 +9,12 @@ Vue.use(VueRouter)
 // 定义路由
 // 每个路由应该映射一个组件。 其中"component"是一个组件配置对象。
 const routes = [
-  // 设置register页面为首页
+  // 主页
   {
-    path: '/',
-    redirect: {
-      name: 'home',
-    }
-  },
-
-  // 登入页
-  {
-    path: '/home',
-    name: 'home',
+    path: '',
+    name: 'index',
     component (resolve) {
-      require(['../pages/home'], resolve)
+      require(['../pages/index'], resolve)
     },
     meta: {keepAlive: true }
   },
