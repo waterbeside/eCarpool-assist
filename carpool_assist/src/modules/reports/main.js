@@ -1,6 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import "../../assets/styles/bootstrap/bootstrap.less";
+import "../../assets/styles/style_reports.less";
 
 import Vue from 'vue'
 import App from './App'
@@ -10,7 +11,7 @@ import qs from 'qs';
 
 
 
-import {ViewBox,ToastPlugin  } from 'vux'
+import {ViewBox,ToastPlugin,LoadingPlugin } from 'vux'
 
 import config from '../../configs/index'
 
@@ -23,7 +24,7 @@ Vue.component('ViewBox', ViewBox)
 
 
 Vue.use(ToastPlugin);;
-
+Vue.use(LoadingPlugin)
 
 
 

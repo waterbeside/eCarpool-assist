@@ -11,13 +11,41 @@ Vue.use(VueRouter)
 const routes = [
   // 主页
   {
-    path: '',
-    name: 'index',
+    path: '/',
+    redirect: {
+      name: 'charts'
+    }
+  },
+  // 图表
+  {
+    path: '/charts',
+    name: 'charts',
     component (resolve) {
-      require(['../pages/index'], resolve)
+      require(['../pages/charts'], resolve)
     },
     meta: {keepAlive: true }
   },
+
+  // 排行
+  {
+    path: '/ranking',
+    name: 'ranking',
+    component (resolve) {
+      require(['../pages/ranking'], resolve)
+    },
+    meta: {keepAlive: true }
+  },
+
+  // 今日
+  {
+    path: '/today',
+    name: 'today',
+    component (resolve) {
+      require(['../pages/today'], resolve)
+    },
+    meta: {keepAlive: true }
+  },
+
 ]
 
 let router = new VueRouter({
