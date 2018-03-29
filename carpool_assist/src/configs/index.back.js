@@ -30,6 +30,8 @@ let config = {
       reports :{
         reputationSummary : baseDomain_n + 'report?method=reputationsummary', //取得拼车总人次。
         getMonthsNotimes : baseDomain + 'carpool/statement/get_months_notimes', //取得各月拼车统计
+        getMonthRanking : baseDomain + 'carpool/statement/get_month_ranking', //取得上月或指定月的拼车排名
+        getTodayInfo : baseDomain + 'carpool/statement/get_today_info', //取得当天拼车情况
       }
     }
   }
