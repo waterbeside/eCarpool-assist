@@ -1,6 +1,6 @@
 @import "cp_base.less";
 
-
+body { background: #FCFCFC}
 /* 数据统计项 */
 .cp-statis-item {
   display: inline-block; text-align: center;  padding: 10px 15px;
@@ -29,10 +29,12 @@
   .cp-chart-content { width: 100%; flex:1}
 }
 
+#Page-ranking , #Page-today {
+  h1.cp-title { font-size: 18px; list-inline:1; padding: 8px 0 8px 12px; margin: 0; background: lighten(@color-primary,15%); color: #FFF; }
+}
 #Page-ranking {
-  h1.cp-title { font-size: 18px; list-inline:1; padding: 8px; margin: 0; background: lighten(@color-primary,15%); color: #FFF;
+  h1.cp-title {
     &.hasSticky { margin-bottom: 44px;}
   }
   .cp-sticky { position: fixed; top:0; width: 100%}
-
 }
