@@ -12,21 +12,11 @@
                 <div slot="title" class="title">减少碳排放(KG)</div>
               </statis-item>
             </div>
-
           </div>
-
-            <div id="chart"  class="cp-chart-content" ></div>
-
-
-
-
-
+          <div id="chart"  class="cp-chart-content" ></div>
         </div>
         <cp-foot-nav-bar current="charts"></cp-foot-nav-bar>
-
-
    </view-box>
-
 </template>
 
 <script>
@@ -41,7 +31,7 @@ import 'echarts/lib/chart/line';
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 import 'echarts/lib/component/legend';
-import 'echarts/lib/component/markLine';
+// import 'echarts/lib/component/markLine';
 import 'echarts/lib/component/dataZoom';
 
 export default {
@@ -57,9 +47,12 @@ export default {
         distance:0,
         carbon:0
       },
+      //构设图表的设置。
       chartOption: {
         title: {
-            text: '拼车统计'
+            text: '拼车统计',
+            padding: [8,4,4,8],
+            textStyle:{color:"#74697e"}
         },
         tooltip: {
             trigger: 'axis',
@@ -85,9 +78,11 @@ export default {
             }
         ],
         legend: {
-          top:3,
+          top:8,
+          right:10,
         },
         grid: {
+          top: '44px',
            left: '3%',
            right: '8%',
            bottom: '50px',
@@ -132,6 +127,10 @@ export default {
 
   },
   methods :{
+    /**
+     * 绘制图表
+     * @param  {string} id 绘制目标的容器ID
+     */
     drawChart(id){
       // 基于准备好的dom，初始化echarts实例
       var myChart = echarts.init(document.getElementById(id));
@@ -139,9 +138,11 @@ export default {
       myChart.setOption(this.chartOption);
 
     },
-
+    /**
+     * [getStatis 取得总行程数目数据。]
+     */
     getStatis (){
-      this.$http.get(config.urls.reports_reputationSummary).then((res)=>{
+      this.$http.get(config.urls.reports.reputationSummary).then((res)=>{
         let data = res.data[0];
         this.statis.people = data.sumtrip;
         this.statis.carbon = data.sumtrip *7.6*2.3/10 ;
@@ -149,10 +150,13 @@ export default {
 
       })
     },
-
+    /**
+     * [getMonthStatis 取得每月数据。]
+     */
+    //取得每月数据。
     getMonthStatis (){
       this.$vux.loading.show({ text: 'Loading' })
-      this.$http.get(config.urls.reports_getMonthsNotimes).then((res)=>{
+      this.$http.get(config.urls.reports.getMonthsNotimes).then((res)=>{
         let data = res.data.data;
         let mylists = data.lists;
         // console.log(this.chartOption.xAxis.data)
@@ -164,13 +168,10 @@ export default {
         mylists.forEach(function(item,index,arr){
           dataList_p.push(item.p);
           dataList_o.push(item.o);
-          console.log(item)
         })
         this.chartOption.series[0].data = dataList_p;
         this.chartOption.series[1].data = dataList_o;
-        this.drawChart('chart')
-
-
+        this.drawChart('chart'); //画图
         this.$vux.loading.hide();
       }).catch(error => {
         this.$vux.loading.hide();
