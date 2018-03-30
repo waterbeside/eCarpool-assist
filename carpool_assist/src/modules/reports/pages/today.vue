@@ -1,10 +1,11 @@
 <template>
-   <cp-view-box id="Page-today" :position="{bottom:'44px'}"    :enableInfinite="false" :enableRefresh="false"   >
+   <cp-view-box id="Page-today"      :enableInfinite="false" :enableRefresh="false"   >
         <div class="page-view-content">
           <h1 class="cp-title" > 今日拼车</h1>
               <table class="table table-bordered table-striped">
                 <thead class="cp-thead">
                   <tr>
+                    <th>车牌</th>
                     <th>司机</th>
                     <th>厂部</th>
                     <th>乘客</th>
@@ -15,6 +16,7 @@
                 <tbody>
                   <tr  v-for="(item,index) in listData"
                     :key="item.infoid">
+                    <td>{{item.carnumber}}</td>
                     <td>{{item.name_o}}</td>
                     <td>{{item.companyname_o}}</td>
                     <td>{{item.name_p}}</td>
