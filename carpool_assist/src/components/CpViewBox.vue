@@ -1,7 +1,6 @@
 <template lang="html">
-    <div class="cp-view-box"  :class="{'down':(state===0),'up':(state==1),refresh:(state===2),touch:touching}" :style="style"    @scroll="scroll($event)">
+    <div class="cp-view-box"   :style="style"    @scroll="scroll($event)">
         <slot ></slot>
-
     </div>
 </template>
 
@@ -30,13 +29,7 @@
         },
         data() {
             return {
-                top: 0,
-                state: 0,
-                startX: 0,
-                startY: 0,
-                touching: false,
-                infiniteLoading: false,
-                downFlag: false, //用来显示是否加载中
+
             }
         },
         methods: {
