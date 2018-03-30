@@ -1,5 +1,5 @@
 <template>
-   <cp-view-box id="Page-ranking" :position="{bottom:'44px'}"    :enableInfinite="false" :enableRefresh="false" @on-scroll="onScroll" >
+   <cp-view-box id="Page-ranking"     :enableInfinite="false" :enableRefresh="false" @on-scroll="onScroll" >
 
         <div class="page-view-content">
           <div>
