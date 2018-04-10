@@ -1,7 +1,9 @@
 <template>
    <cp-view-box id="Page-today"      :enableInfinite="false" :enableRefresh="false"   >
         <div class="page-view-content">
-          <h1 class="cp-title" > 今日拼车</h1>
+          <h1 class="cp-title" > 今日拼车
+            <div class="cp-total"> {{listTotal}}</div>
+          </h1>
               <table class="table table-bordered table-striped">
                 <thead class="cp-thead">
                   <tr>
@@ -46,7 +48,9 @@ export default {
     }
   },
   computed : {
-
+    listTotal (){
+      return this.listData.length;
+    }
   },
   watch :{
 

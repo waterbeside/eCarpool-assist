@@ -30,9 +30,12 @@ body { background: #FCFCFC}
 }
 
 #Page-ranking , #Page-today {
-  h1.cp-title { font-size: 18px; list-inline:1; padding: 8px 0 8px 12px; margin: 0; background: lighten(@color-primary,15%); color: #FFF; }
+  h1.cp-title { font-size: 18px; list-inline:1; padding: 8px 0 8px 12px; margin: 0; background: lighten(@color-primary,15%); color: #FFF;
+    .cp-total { float: right; display: inline-block; margin-right: 12px; font-size: 14px;   background: #FFF; color: lighten(@color-primary,15%); padding: 2px 4px; border-radius: 4px;}
+   }
   .page-view-content { padding-bottom: 44px;}
 }
+
 #Page-ranking {
   h1.cp-title {
     &.hasSticky { margin-bottom: 44px;}
