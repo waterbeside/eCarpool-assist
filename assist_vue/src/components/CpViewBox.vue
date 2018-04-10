@@ -51,6 +51,6 @@
 </script>
 <style lang="less">
 .cp-view-box {
-  height:100%; overflow-y: scroll;
+  height:100%; overflow-y: scroll; -webkit-overflow-scrolling:touch;
 }
 </style>
