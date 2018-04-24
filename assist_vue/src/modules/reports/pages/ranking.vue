@@ -1,57 +1,43 @@
 <template>
-   <cp-view-box id="Page-ranking"     :enableInfinite="false" :enableRefresh="false" @on-scroll="onScroll" >
+   <cp-view-box id="Page-ranking"    @on-scroll="onScroll" >
 
         <div class="page-view-content">
           <div>
-            <h1 class="cp-title" :class="{'hasSticky':isSticky}"> 上月拼车排名</h1>
-            <div style="height:44px;" :class="{'cp-sticky':isSticky}">
+            <h1 class="cp-title"  > 上月拼车排名</h1>
+            <div class="tab-head" >
                 <tab :line-width="1" v-model="tabIndex">
                   <tab-item :key="0">司机</tab-item>
                   <tab-item :key="1">乘客</tab-item>
                 </tab>
             </div>
             <div v-show="tabIndex===0">
-              <table class="table table-bordered table-striped">
-                <thead class="cp-thead">
-                  <tr>
-                    <th>NO.</th>
-                    <th>姓名</th>
-                    <th>厂部</th>
-                    <th>人次</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr  v-for="(item,index) in rankingData_o"
-                    :key="item.uid">
-                    <td>{{index+1}}</td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.companyname}}</td>
-                    <td>{{item.num}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div v-show="tabIndex===1">
-              <table class="table table-bordered">
-                <thead class="cp-thead">
-                  <tr>
-                    <th>NO.</th>
-                    <th>姓名</th>
-                    <th>厂部</th>
-                    <th>次数</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr  v-for="(item,index) in rankingData_p"
-                    :key="item.uid">
-                    <td>{{index+1}}</td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.companyname}}</td>
-                    <td>{{item.num}}</td>
-                  </tr>
+              <v-table
+                  is-horizontal-resize
+                  style="width:100%; border:none"
+                  is-vertical-resize
+                  :vertical-resize-offset='42'
+                  :columns="columns"
+                  :table-data="rankingData_o"
+                  :is-loading="isLoading_o"
+                  row-hover-color="#eee"
+                  row-click-color="#edf7ff"
+              ></v-table>
 
-                </tbody>
-              </table>
+            </div>
+
+            <div v-show="tabIndex===1">
+              <v-table
+                  is-horizontal-resize
+                  style="width:100%;border:none"
+                  is-vertical-resize
+                  :vertical-resize-offset='42'
+                  :columns="columns"
+                  :table-data="rankingData_p"
+                  :is-loading="isLoading_p"
+                  row-hover-color="#eee"
+                  row-click-color="#edf7ff"
+              ></v-table>
+
             </div>
 
           </div>
@@ -66,11 +52,12 @@
 import config from '../../../configs'
 import CpViewBox from '../../../components/CpViewBox'
 import CpFootNavBar from '../components/CpFootNavBar'
-import { Tab, TabItem, Sticky} from 'vux'
+import {VTable} from 'vue-easytable';
+import { Tab, TabItem} from 'vux'
 
 export default {
   components: {
-    Tab, TabItem, Sticky, CpFootNavBar,CpViewBox
+    Tab, TabItem, CpFootNavBar,CpViewBox,VTable
 
   },
 
@@ -79,8 +66,23 @@ export default {
       showSpace: false,
       tabIndex:0,
       isSticky: false,
-      rankingData_o: [],
+      isLoading_p: true,
+      isLoading_o: true,
       rankingData_p: [],
+      rankingData_o: [],
+      columns: [
+          {
+              field: 'no', title:'#', width: 50, titleAlign: 'center', columnAlign: 'center',
+              formatter: function (rowData,rowIndex,pagingIndex,field) {
+                  return rowIndex < 3 ? '<span style="color:red;font-weight: bold;">' + (rowIndex + 1) + '</span>' : rowIndex + 1
+              },isFrozen: true
+          },
+          {field: 'name', title:'名称',  width: 140,  titleAlign: 'center',columnAlign:'center'},
+          // {field: 'uid', title: 'uid', width: 80, titleAlign: 'center',columnAlign:'center'},
+          {field: 'companyname', title: '厂部', width: 100, titleAlign: 'center',columnAlign:'center'},
+          {field: 'num', title: '人次', width: 84, titleAlign: 'center',columnAlign:'center'},
+      ],
+
     }
   },
   computed : {
@@ -119,9 +121,12 @@ export default {
           }
         }
       }
-
+      this.isLoading_p =  true;
+      this.isLoading_o =  true;
       this.$vux.loading.show({ text: 'Loading' })
       this.$http.get(config.urls.reports.getMonthRanking,{params:{type:type}}).then((res)=>{
+
+
         if(res.data.code===0){
           let data = res.data.data
           if(type){
@@ -129,12 +134,16 @@ export default {
           }else{
             this.rankingData_o = data.lists;
           }
+          this.isLoading_o =  false;
+          this.isLoading_p =  false;
           this.$vux.loading.hide();
 
         }
         // console.log()
       }).catch(error => {
         this.$vux.loading.hide();
+        this.isLoading_o =  false;
+        this.isLoading_p =  false;
       })
     },
 

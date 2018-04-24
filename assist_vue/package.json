@@ -14,6 +14,7 @@
     "echarts": "^4.0.4",
     "qs": "^6.5.1",
     "vue": "^2.5.2",
+    "vue-easytable": "^1.7.0",
     "vue-focus": "^2.1.0",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",

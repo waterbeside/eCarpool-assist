@@ -1,50 +1,54 @@
 <template>
-   <cp-view-box id="Page-today"      :enableInfinite="false" :enableRefresh="false"   >
+
+   <view-box id="Page-today"       >
         <div class="page-view-content">
           <h1 class="cp-title" > 今日拼车
-            <div class="cp-total"> {{listTotal}}</div>
+            <div class="cp-total"> 今日拼车数 {{listTotal}}</div>
           </h1>
-              <table class="table table-bordered table-striped">
-                <thead class="cp-thead">
-                  <tr>
-                    <th>车牌</th>
-                    <th>司机</th>
-                    <th>厂部</th>
-                    <th>乘客</th>
-                    <th>厂部</th>
-                    <th>时间</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr  v-for="(item,index) in listData"
-                    :key="item.infoid">
-                    <td>{{item.carnumber}}</td>
-                    <td>{{item.name_o}}</td>
-                    <td>{{item.companyname_o}}</td>
-                    <td>{{item.name_p}}</td>
-                    <td>{{item.companyname_p}}</td>
-                    <td>{{item.time}}</td>
-                  </tr>
-                </tbody>
-              </table>
+          <div class="tabble-wrapper" style="position: absolute; top:35px; right:0; bottom:0;  left:0;">
+            <v-table
+              is-horizontal-resize
+              style="width:100%; "
+              is-vertical-resize
+              :vertical-resize-offset='42'
+              :columns="columns"
+              :table-data="listData"
+
+              :is-loading="isLoading"
+              row-hover-color="#eee"
+              row-click-color="#edf7ff"
+      ></v-table>
+          </div>
+
+
         </div>
         <cp-foot-nav-bar current="today"></cp-foot-nav-bar>
-   </cp-view-box>
+   </view-box>
 </template>
 
 <script>
 import config from '../../../configs'
 import CpViewBox from '../../../components/CpViewBox'
 import CpFootNavBar from '../components/CpFootNavBar'
-
+import {VTable} from 'vue-easytable';
 
 export default {
   components: {
-      CpFootNavBar,CpViewBox
+      CpFootNavBar,CpViewBox,VTable
   },
   data () {
     return {
-      listData: [],
+      isLoading:true,
+      listData: [  ],
+      columns: [
+          {field: 'carnumber', title:'车牌', width: 100, titleAlign: 'center',columnAlign:'center'},
+          {field: 'name_o', title: '司机', width: 150, titleAlign: 'center',columnAlign:'center'},
+          {field: 'companyname_o', title: '厂部', width: 120, titleAlign: 'center',columnAlign:'center'},
+          {field: 'name_p', title: '乘客', width: 150, titleAlign: 'center',columnAlign:'center'},
+          {field: 'companyname_p', title: '厂部', width: 120, titleAlign: 'center',columnAlign:'center'},
+          {field: 'date_time', title: '时间', width: 140, titleAlign: 'center',columnAlign:'center'}
+      ],
+
     }
   },
   computed : {
@@ -60,8 +64,10 @@ export default {
      * 取得列表
      */
     getList(){
+      this.isLoading = true;
       this.$vux.loading.show({ text: 'Loading' })
       this.$http.get(config.urls.reports.getTodayInfo).then((res)=>{
+        this.isLoading = false;
         if(res.data.code===0){
           let data = res.data.data
           this.listData = data.lists;
@@ -70,6 +76,7 @@ export default {
         }
         // console.log()
       }).catch(error => {
+        this.isLoading = false;
         this.$vux.loading.hide();
       })
     },
