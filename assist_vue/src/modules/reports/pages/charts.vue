@@ -161,7 +161,6 @@ export default {
         // console.log(this.chartOption.xAxis.data)
         //
         this.chartOption.xAxis.data = data.months;
-        console.log(this.chartOption.xAxis.data)
         let dataList_p = [];
         let dataList_o = [];
         mylists.forEach(function(item,index,arr){
