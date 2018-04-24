@@ -41,7 +41,7 @@ export default {
 }
 </script>
 <style lang="less"  scoped>
-  .cp-footNavBar { position: fixed; bottom: 0; width: 100%; display: flex; background: #FFF; border-top: 1px solid #eee; box-shadow: 0 0px 8px rgba(0,0,0,0.1)}
+  .cp-footNavBar { position: absolute; bottom: 0; width: 100%; display: flex; background: #FFF; border-top: 1px solid #eee; box-shadow: 0 0px 8px rgba(0,0,0,0.1);}
   .cp-item-link { color:#aaa;   }
   .cp-bar-tab-item { display: flex; flex-direction: column; font-size: 12px;justify-content:center;flex:1; padding:4px;text-align: center;
     svg.cp-iconfont {height: 20px; fill:#aaa; margin-bottom: -4px;}
