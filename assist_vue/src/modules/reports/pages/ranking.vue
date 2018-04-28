@@ -69,24 +69,30 @@ export default {
       isLoading_p: true,
       isLoading_o: true,
       rankingData_p: [],
+      name_width: 140,
       rankingData_o: [],
-      columns: [
+
+
+    }
+  },
+  computed : {
+    columns (){
+      return [
           {
               field: 'no', title:'#', width: 50, titleAlign: 'center', columnAlign: 'center',
               formatter: function (rowData,rowIndex,pagingIndex,field) {
                   return rowIndex < 3 ? '<span style="color:red;font-weight: bold;">' + (rowIndex + 1) + '</span>' : rowIndex + 1
               },isFrozen: true
           },
-          {field: 'name', title:'名称',  width: 140,  titleAlign: 'center',columnAlign:'center'},
+          {field: 'name', title:'名称',  width: this.name_width,  titleAlign: 'center',columnAlign:'center'},
           // {field: 'uid', title: 'uid', width: 80, titleAlign: 'center',columnAlign:'center'},
           {field: 'companyname', title: '厂部', width: 100, titleAlign: 'center',columnAlign:'center'},
-          {field: 'num', title: '人次', width: 84, titleAlign: 'center',columnAlign:'center'},
-      ],
-
+          {field: 'num', title: '<span style="margin-left:10px">人次</span>', width:100, titleAlign: 'left',columnAlign:'left',
+          formatter: function (rowData,rowIndex,pagingIndex,field) {
+            return '<span style="margin-left:10px">' + (rowData.num) + '</span>'
+          }},
+      ]
     }
-  },
-  computed : {
-
 
   },
   watch :{
@@ -167,6 +173,8 @@ export default {
   },
   mounted () {
     this.getRankingList(this.tabIndex);
+    let w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    this.name_width = w - 250;
 
   },
   activated (){

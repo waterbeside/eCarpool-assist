@@ -40,20 +40,24 @@ export default {
     return {
       isLoading:true,
       listData: [  ],
-      columns: [
-          {field: 'carnumber', title:'车牌', width: 100, titleAlign: 'center',columnAlign:'center'},
-          {field: 'name_o', title: '司机', width: 150, titleAlign: 'center',columnAlign:'center'},
-          {field: 'companyname_o', title: '厂部', width: 120, titleAlign: 'center',columnAlign:'center'},
-          {field: 'name_p', title: '乘客', width: 150, titleAlign: 'center',columnAlign:'center'},
-          {field: 'companyname_p', title: '厂部', width: 120, titleAlign: 'center',columnAlign:'center'},
-          {field: 'date_time', title: '时间', width: 140, titleAlign: 'center',columnAlign:'center'}
-      ],
+      field_width: 130,
+      field_width_2: 90,
 
     }
   },
   computed : {
     listTotal (){
       return this.listData.length;
+    },
+    columns (){
+      return [
+        {field: 'carnumber', title:'车牌', width: 100, titleAlign: 'center',columnAlign:'center'},
+        {field: 'name_o', title: '司机', width: this.field_width, titleAlign: 'center',columnAlign:'center'},
+        {field: 'companyname_o', title: '厂部', width: this.field_width_2, titleAlign: 'center',columnAlign:'center'},
+        {field: 'name_p', title: '乘客', width: this.field_width, titleAlign: 'center',columnAlign:'center'},
+        {field: 'companyname_p', title: '厂部', width: this.field_width_2, titleAlign: 'center',columnAlign:'center'},
+        {field: 'date_time', title: '时间', width: 160, titleAlign: 'center',columnAlign:'center'}
+        ]
     }
   },
   watch :{
@@ -88,6 +92,11 @@ export default {
   },
   mounted () {
     this.getList();
+    let w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    if(w>700){
+      this.field_width = (w - 260)/4+50;
+      this.field_width_2 = (w - 260)/4-50;
+    }
 
   },
   activated (){
