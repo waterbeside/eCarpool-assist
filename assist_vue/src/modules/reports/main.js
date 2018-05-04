@@ -22,7 +22,7 @@ import config from '../../configs/index'
 Vue.component('ViewBox', ViewBox)
 
 
-Vue.use(ToastPlugin);;
+Vue.use(ToastPlugin);
 Vue.use(LoadingPlugin)
 
 
