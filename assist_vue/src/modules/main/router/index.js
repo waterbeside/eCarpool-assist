@@ -18,6 +18,14 @@ const routes = [
     },
     meta: {keepAlive: true }
   },
+  {
+    path: '/test',
+    name: 'test',
+    component (resolve) {
+      require(['../pages/test'], resolve)
+    },
+    meta: {keepAlive: true }
+  },
 ]
 
 let router = new VueRouter({

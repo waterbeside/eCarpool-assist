@@ -10,6 +10,7 @@ import axios from 'axios';
 import qs from 'qs';
 import { focus } from 'vue-focus';
 
+import tokenAxios from '../../utils/axios';
 
 
 import {ViewBox,ToastPlugin  } from 'vux'
@@ -29,19 +30,7 @@ Vue.use(ToastPlugin);;
 
 
 
-// Vue.config.productionTip = false
-
-
-axios.interceptors.request.use(config => {
-   if(config.method  === 'post'){
-     config.data = qs.stringify(config.data);
-   }
-   config.headers['X-Requested-With'] = 'XMLHttpRequest'
-  return config
-},error =>{
-    return Promise.reject(error)
-})
-Vue.prototype.$http = axios;
+Vue.prototype.$http = tokenAxios;
 
 /* eslint-disable no-new */
 new Vue({
