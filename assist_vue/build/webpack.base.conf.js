@@ -18,7 +18,8 @@ const webpackConfig = {
     app: './src/modules/main/main.js',
     invitation: './src/modules/invitation/main.js',
     reports: './src/modules/reports/main.js',
-    aboutus: './src/modules/aboutus/main.js'
+    aboutus: './src/modules/aboutus/main.js',
+    docs: './src/modules/docs/main.js'
   },
   output: {
     path: config.build.assetsRoot,
