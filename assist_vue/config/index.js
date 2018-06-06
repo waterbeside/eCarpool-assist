@@ -42,7 +42,7 @@ module.exports = {
     invitation: path.resolve(__dirname, '../dist/invitation.html'),
     reports: path.resolve(__dirname, '../dist/reports.html'),
     aboutus: path.resolve(__dirname, '../dist/aboutus.html'),
-    aboutus: path.resolve(__dirname, '../dist/docs.html'),
+    docs: path.resolve(__dirname, '../dist/docs.html'),
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),

@@ -128,7 +128,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     // ***** 关于我们
     new HtmlWebpackPlugin({
-      filename: config.build.aboutus,
+      filename: config.build.docs,
       template: 'src/modules/docs/index.html',
       inject: true,
       minify: {
