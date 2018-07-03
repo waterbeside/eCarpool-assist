@@ -7,7 +7,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import axios from 'axios';
+import axios from '@/utils/axios';
 import qs from 'qs';
 import { focus } from 'vue-focus';
 
@@ -45,7 +45,7 @@ Vue.use(ToastPlugin);;
 
 // Vue.config.productionTip = false
 
-
+/*
 axios.interceptors.request.use(config => {
    if(config.method  === 'post'){
      config.data = qs.stringify(config.data);
@@ -54,7 +54,7 @@ axios.interceptors.request.use(config => {
   return config
 },error =>{
     return Promise.reject(error)
-})
+})*/
 Vue.prototype.$http = axios;
 
 /* eslint-disable no-new */
