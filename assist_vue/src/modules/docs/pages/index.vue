@@ -2,7 +2,13 @@
   <view-box ref="viewBox" >
 
         <div class="page-view-content">
-
+          <div class="page-view-content" >
+            <ul class="list-group">
+              <li class="list-group-item"><router-link to="/lottery">抽奖说明</router-link></li>
+              <li class="list-group-item"><router-link to="/score">积分说明</router-link></li>
+              <li class="list-group-item"><router-link to="/carpool_disclaimer">免责声明</router-link></li>
+            </ul>
+          </div>
         </div>
    </view-box>
 
@@ -20,7 +26,6 @@ export default {
   data () {
     return {
 
-
     }
   },
   computed : {
@@ -28,6 +33,10 @@ export default {
 
   },
   methods :{
+    init (){
+
+
+    }
 
 
 
@@ -37,13 +46,15 @@ export default {
 
   },
   activated (){
-   
+
   }
 }
 
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style  lang="less">
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style  lang="less" scoped>
 
 </style>

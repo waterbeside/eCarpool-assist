@@ -21,7 +21,17 @@ const routes = [
     meta: {keepAlive: true }
   },
 
-  // 应用下载
+  // 主页
+  {
+    path: '/:id',
+    name: 'detail',
+    component (resolve) {
+      require(['../pages/detail'], resolve)
+    },
+    meta: {keepAlive: true }
+  },
+/*
+  // 积分规则
   {
     path: '/score',
     name: 'score',
@@ -30,6 +40,15 @@ const routes = [
     },
     meta: {keepAlive: true }
   },
+  // 抽奖规则
+  {
+    path: '/lottery',
+    name: 'lottery',
+    component (resolve) {
+      require(['../pages/lottery'], resolve)
+    },
+    meta: {keepAlive: true }
+  },*/
 ]
 
 let router = new VueRouter({
