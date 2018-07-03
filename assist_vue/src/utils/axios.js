@@ -17,14 +17,18 @@ const tkAxios = axios.create({
 tkAxios.interceptors.request.use(config => {
   // config.headers['Content-Type'] = 'application/json;charset=UTF-8';
   // 在发送请求之前做某件事
-   if(config.method  === 'post' || config.method  === 'put' ){
-     config.data = qs.stringify(config.data);
-   }
-   config.headers['X-Requested-With'] = 'XMLHttpRequest'
-   // config.withCredentials = false
+  if(config.method  === 'post' || config.method  === 'put' ){
+   config.data = qs.stringify(config.data);
+  }
+  config.headers['X-Requested-With'] = 'XMLHttpRequest'
+  // config.withCredentials = false
+  let lang = localStorage.getItem('lag');
+  if(lang){
+    config.headers['Accept-Language'] = lang;
+  }
   // token放到头
   if (localStorage.getItem('CP_U_TOKEN')) {
-      config.headers.Authorization = 'Bearer ' + localStorage.getItem('CP_U_TOKEN')
+    config.headers.Authorization = 'Bearer ' + localStorage.getItem('CP_U_TOKEN');
   }
   return config
 },error =>{
