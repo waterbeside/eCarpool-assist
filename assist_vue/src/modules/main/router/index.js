@@ -26,6 +26,15 @@ const routes = [
     },
     meta: {keepAlive: true }
   },
+  // 主页
+  {
+    path: '/test2',
+    name: 'test2',
+    component (resolve) {
+      require(['../pages/test2'], resolve)
+    },
+    meta: {keepAlive: true }
+  },
 ]
 
 let router = new VueRouter({
