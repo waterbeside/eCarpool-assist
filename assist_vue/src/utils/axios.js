@@ -22,14 +22,18 @@ tkAxios.interceptors.request.use(config => {
   }
   config.headers['X-Requested-With'] = 'XMLHttpRequest'
   // config.withCredentials = false
-  let lang = localStorage.getItem('lag');
-  if(lang){
-    config.headers['Accept-Language'] = lang;
+  
+  if(localStorage){
+    let lang = localStorage.getItem('lag');
+    if(lang){
+      config.headers['Accept-Lag'] = lang;
+    }
+    // token放到头
+    if (localStorage.getItem('CP_U_TOKEN')) {
+      config.headers.Authorization = 'Bearer ' + localStorage.getItem('CP_U_TOKEN');
+    }
   }
-  // token放到头
-  if (localStorage.getItem('CP_U_TOKEN')) {
-    config.headers.Authorization = 'Bearer ' + localStorage.getItem('CP_U_TOKEN');
-  }
+
   return config
 },error =>{
     alert("错误的传参", 'fail')
