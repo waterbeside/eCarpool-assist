@@ -22,11 +22,12 @@ tkAxios.interceptors.request.use(config => {
   }
   config.headers['X-Requested-With'] = 'XMLHttpRequest'
   // config.withCredentials = false
-  
+
   if(localStorage){
     let lang = localStorage.getItem('lag');
     if(lang){
-      config.headers['Accept-Lag'] = lang;
+      // config.headers['Accept-Lag'] = lang;
+      config.headers['Accept-Language'] = lang;
     }
     // token放到头
     if (localStorage.getItem('CP_U_TOKEN')) {
