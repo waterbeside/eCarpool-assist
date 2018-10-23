@@ -13,6 +13,23 @@ const tkAxios = axios.create({
   }],
 
 })
+
+var  lang = localStorage.getItem('language');
+lang = lang ?  lang : localStorage.getItem('lang');
+lang = lang ?  lang : localStorage.getItem('lag');
+var _language = lang;
+lang = lang ? lang : 'zh';
+var t = {message:[]};
+var langPathArray = {
+  'zh' : true,
+  'vi' : true,
+  'en' : true,
+}
+if(lang && typeof(langPathArray[lang])!="undefined" && langPathArray[lang]){
+  // t =  require('@/../static/lang/'+lang);
+}
+
+
 //POST传参序列化(添加请求拦截器)
 tkAxios.interceptors.request.use(config => {
   // config.headers['Content-Type'] = 'application/json;charset=UTF-8';
@@ -22,19 +39,15 @@ tkAxios.interceptors.request.use(config => {
   }
   config.headers['X-Requested-With'] = 'XMLHttpRequest'
   // config.withCredentials = false
-
   if(localStorage){
-    let lang = localStorage.getItem('lag');
-    if(lang){
-      // config.headers['Accept-Lag'] = lang;
-      config.headers['Accept-Language'] = lang;
+    if(_language){
+      config.headers['Accept-Language'] = _language;
     }
     // token放到头
     if (localStorage.getItem('CP_U_TOKEN')) {
       config.headers.Authorization = 'Bearer ' + localStorage.getItem('CP_U_TOKEN');
     }
   }
-
   return config
 },error =>{
     alert("错误的传参", 'fail')

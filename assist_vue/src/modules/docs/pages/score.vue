@@ -69,8 +69,9 @@ export default {
   },
   activated (){
     this.jwt = localStorage.getItem('CP_U_TOKEN');
-    this.lag = localStorage.getItem('lag');
+    this.lag = localStorage.getItem('language');
     this.ios_version = localStorage.getItem('ios_version');
+    this.android_version = localStorage.getItem('android_version');
   }
 }
 </script>

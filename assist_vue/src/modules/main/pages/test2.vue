@@ -5,7 +5,7 @@
 
             <article class="cp-article">
               <p v-show="isShowTest" >jwt: <b>{{jwt}}</b></p>
-              <p v-show="isShowTest" >lag: <b>{{lag}}</b></p>
+              <p v-show="isShowTest" >language: <b>{{lag}}</b></p>
               <p v-show="isShowTest">ios_version: <b>{{ios_version}}</b></p>
               <p v-show="isShowTest" >android_version: <b>{{android_version}}</b></p>
             </article>
@@ -56,7 +56,7 @@ export default {
   },
   activated (){
     this.jwt = localStorage.getItem('CP_U_TOKEN');
-    this.lag = localStorage.getItem('lag');
+    this.lag = localStorage.getItem('language');
     this.ios_version = localStorage.getItem('ios_version');
     this.android_version = localStorage.getItem('android_version');
   }
