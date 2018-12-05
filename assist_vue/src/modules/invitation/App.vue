@@ -18,7 +18,7 @@
 
 <script>
 
-import config from '../../configs'
+import config from '@/configs'
 export default {
   name: 'app',
   data () {

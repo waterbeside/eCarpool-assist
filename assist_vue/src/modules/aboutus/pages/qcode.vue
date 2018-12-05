@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import config from '../../../configs'
+import config from '@/configs'
 import {Qrcode  } from 'vux'
 
 export default {

@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import config from '../../../configs'
-import StatisItem from '../../../components/StatisItem'
+import config from '@/configs'
+import StatisItem from '@/components/StatisItem'
 import CpFootNavBar from '../components/CpFootNavBar'
 
 // 引入 ECharts 主模块

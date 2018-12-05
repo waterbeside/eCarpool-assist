@@ -15,7 +15,7 @@ import { focus } from 'vue-focus';
 
 import {ViewBox,Countdown,CheckIcon,Spinner,Step,StepItem,ToastPlugin,Popup,PopupRadio,Msg,Qrcode  } from 'vux'
 
-import config from '../../configs/index'
+import config from '@/configs'
 
 
 // 全局注册vux的组件

@@ -148,7 +148,7 @@
 </template>
 
 <script>
-import config from '../../../configs'
+import config from '@/configs'
 
 
 export default {
@@ -239,6 +239,7 @@ export default {
       let _this = this;
       switch (this.step) {
         case 0:
+          alert('现在不开放注册,请直接登录');return false;
           if(_this.formData.password.length<6){
             _this.$vux.toast.text('密码不得少于6位');
             _this.isFocus.password = true;
@@ -431,9 +432,12 @@ export default {
 
   },
   activated (){
+
     this.link_code = this.$route.params.link_code;
+    this.$router.push({name:'login',params: {link_code: this.link_code}})
     this.getInvitation();
     this.getCompany();
+
   }
 }
 

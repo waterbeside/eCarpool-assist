@@ -70,9 +70,9 @@
                   <button class="btn btn-primary btn-lg  btn-block J-btn-submit" v-show="step===0"  :disabled="!isEnableNext" @click="signin">登入</button>
                 </p>
               </form>
-              <router-link  class="cp-login-btn pull-right"  :to="{ name:'register', params: {link_code: link_code} }" v-show="step==0">
+              <!-- <router-link  class="cp-login-btn pull-right"  :to="{ name:'register', params: {link_code: link_code} }" v-show="step==0">
                 未有帐号，现在注册 <i class="fa fa-arrow-right"></i>
-              </router-link>
+              </router-link> -->
             </div>
 
           </div>
@@ -104,7 +104,7 @@
 </template>
 
 <script>
-import config from '../../../configs'
+import config from '@/configs'
 
 export default {
   components: {

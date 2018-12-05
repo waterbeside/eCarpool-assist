@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import config from '../../../configs'
+import config from '@/configs'
 import {Group, XInput,PopupRadio} from 'vux'
 
 export default {

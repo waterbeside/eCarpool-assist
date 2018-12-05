@@ -49,8 +49,8 @@
 </template>
 
 <script>
-import config from '../../../configs'
-import CpViewBox from '../../../components/CpViewBox'
+import config from '@/configs'
+import CpViewBox from '@/components/CpViewBox'
 import CpFootNavBar from '../components/CpFootNavBar'
 import {VTable} from 'vue-easytable';
 import { Tab, TabItem} from 'vux'

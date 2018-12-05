@@ -10,7 +10,7 @@ import axios from '@/utils/axios';
 
 import {ViewBox,ToastPlugin  } from 'vux'
 
-import config from '../../configs'
+import config from '@/configs'
 
 
 // 全局注册vux的组件
