@@ -30,7 +30,6 @@
                   <div class="cp-form-group ">
                     <label  class="control-label "  for="phone"><i class="fa fa-id-card"></i> </label>
                     <input type="text" class="form-control form-control-line  " name="username" placeholder="工号/帐号/手机号" v-model="formData.username" v-focus="isFocus.username" @focus="isFocus.username=true" @blur="isFocus.username=false">
-
                   </div>
 
                   <div class="cp-form-group ">
@@ -39,7 +38,7 @@
                   </div>
 
                   <div class="cp-tips-disclaimer">
-                    <check-icon :value.sync="agree"  type="plain" >  已经阅读并同意</check-icon><a class="cp-disclaimer-link" @click.prevent="showDisclaimer">《使用协议》</a>
+                    <check-icon :value.sync="agree"  type="plain" > 已经阅读并同意</check-icon><a class="cp-disclaimer-link" @click.prevent="showDisclaimer">《使用协议》</a>
 
                     <!-- <input type="checkbox" name="agree_disclaimer" id="agree_disclaimer" v-model="agree"><label class="label-checkbox" for="agree_disclaimer">已经阅读并同意<a href="">《使用协议》</a></label> -->
                   </div>
