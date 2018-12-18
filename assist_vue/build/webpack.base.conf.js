@@ -1,10 +1,11 @@
 'use strict'
 const path = require('path')
+const glob = require('glob')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const vuxLoader = require('vux-loader')
-
+const entries = utils.getEntry('./src/modules/**/main.js')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -14,13 +15,14 @@ function resolve (dir) {
 
 const webpackConfig = {
   context: path.resolve(__dirname, '../'),
-  entry: {
+  /*entry: {
     app: './src/modules/main/main.js',
     invitation: './src/modules/invitation/main.js',
     reports: './src/modules/reports/main.js',
     aboutus: './src/modules/aboutus/main.js',
     docs: './src/modules/docs/main.js'
-  },
+  },*/
+  entry: entries,
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -68,7 +70,7 @@ const webpackConfig = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+          name: utils.assetsPath('assets/fonts/[name].[hash:7].[ext]')
         }
       }
     ]
@@ -87,7 +89,6 @@ const webpackConfig = {
   }
 }
 
-
 // 原来的 module.exports 代码赋值给变量 webpackConfig
 module.exports = vuxLoader.merge(webpackConfig, {
   plugins: [
@@ -99,7 +100,7 @@ module.exports = vuxLoader.merge(webpackConfig, {
     },
     {
       name: 'less-theme',
-      path: 'src/assets/styles/theme_wei.less'
+      path: 'src/assets/css/theme_wei.less'
     }
   ]
 })

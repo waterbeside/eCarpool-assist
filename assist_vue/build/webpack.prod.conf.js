@@ -1,5 +1,6 @@
 'use strict'
 const path = require('path')
+const glob = require('glob')
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
@@ -76,8 +77,9 @@ const webpackConfig = merge(baseWebpackConfig, {
       chunks: ['manifest', 'vendor', 'app']
 
     }),
+
     // ***** 邀请页面模块
-    new HtmlWebpackPlugin({
+    /*new HtmlWebpackPlugin({
       filename: config.build.invitation,
       template: 'src/modules/invitation/index.html',
       inject: true,
@@ -142,7 +144,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'dependency',
       chunks: ['manifest', 'vendor', 'docs']
 
-    }),
+    }),*/
     // keep module.id stable when vendor modules does not change
     new webpack.HashedModuleIdsPlugin(),
     // enable scope hoisting
@@ -204,6 +206,30 @@ if (config.build.productionGzip) {
       minRatio: 0.8
     })
   )
+}
+
+
+var pages = utils.getEntry('src/modules/**/index.html');
+
+
+for (var pathname in pages) {
+  var conf = {
+      filename: process.env.NODE_ENV === 'testing'
+        ? pathname + '.html'
+        : config.build[pathname],
+      template: pages[pathname],
+      inject: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+      },
+      // chunks:[pathname],
+      chunksSortMode:'dependency',  // dependency 页面中引入的js按照依赖关系排序；manual 页面中引入的js按照下面的chunks的数组中的顺序排序；
+      chunks:['manifest', 'vendor', pathname]  // 生成的页面中引入的js，'manifest', 'vender'这两个js是webpack在打包过程中抽取出的一些公共方法依赖，其中，'manifest'又是从'vender'中抽取得到的，所以这三个js文件的依赖关系是 pathname依赖 'vender'，'vender'依赖'manifest'.
+    }
+
+  webpackConfig.plugins.push(new HtmlWebpackPlugin(conf));
 }
 
 if (config.build.bundleAnalyzerReport) {

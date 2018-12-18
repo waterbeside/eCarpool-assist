@@ -32,7 +32,7 @@ tokenAxios.interceptors.request.use(config => {
   getLanguage();
   config.isPure = config.isPure || false;
   if(config.isPure) return config;
-  var isQs = config.qs || true;
+  var isQs = config.qs === false ? false  : true;
   var unsetAuthorization = config.unsetAuthorization || false;
   var unsetLanguage = config.unsetLanguage || false;
 

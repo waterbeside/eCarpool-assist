@@ -7,6 +7,7 @@
             <li class="list-group-item"><a href="docs.html">文档</a></li>
             <li class="list-group-item"><a href="invitation.html">站外邀请</a></li>
             <li class="list-group-item"><a href="reports.html">报表</a></li>
+            <li class="list-group-item"><a href="content.html">内容系统</a></li>
             <li class="list-group-item"><a href="index.html#/test">test httpRequest</a></li>
             <li class="list-group-item"><a href="index.html#/test2">test localStorage</a></li>
           </ul>

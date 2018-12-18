@@ -1,8 +1,8 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 
-import "../../assets/styles/bootstrap/bootstrap.less";
-import "../../assets/styles/style_invitation.less";
+import "../../assets/css/bootstrap/bootstrap.less";
+import "../../assets/css/style_invitation.less";
 import Vue from 'vue'
 import App from './App'
 import router from './router'
