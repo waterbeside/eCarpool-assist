@@ -1,0 +1,85 @@
+@import "_base.less";
+
+body { background: @color-dark-white; font-size: 16px;}
+a {
+  color:@color-black-l2; text-decoration: none;
+  &:hover {color: @color-primary}
+}
+
+.list-loading-wrapper { margin-top: 20px;}
+.list-loadmore-bar {
+  margin-bottom: 20px;padding: 12px;
+  background:@color-dark-white; border:1px solid @color-border; border-radius: 3px; box-shadow: inset 0 -1px 10px rgba(0,0,0,.1);
+  font-size: 14px; font-weight: bold;color:@color-silver; text-align: center; cursor: pointer;
+}
+.list-no-more { margin: 20px 0 ;  color:@color-silver-l2; text-align: center;}
+
+
+.el-container.not-el {
+  display: flex; flex-direction: row; border-size:border-box
+  &.is-vertical {
+    flex-direction:column;
+  }
+  .el-main { display: block; padding: 20px;  flex: 1; overflow: auto; border-size:border-box}
+}
+
+
+
+.list-item-base(){
+  @padding-top: 12px;
+  position: relative; padding: @padding-top 8px; border-bottom: 1px solid @color-border;
+  .name {
+    font-size: 14px; color: @color-gray;
+    b {color: @color-silver-d2;}
+    .loginname {font-size: 12px;color: @color-silver-l1;}
+  }
+  .time { font-size: 12px; color:@color-silver-l2}
+  .content { font-size:14px}
+  &:hover { background-color:@color-gray-l1}
+}
+
+
+.idle-list {
+  .item {
+    .list-item-base();
+    cursor:pointer;
+    .title { margin: 0 0 8px}
+    .time-bar {   font-size: 12px;   color: @color-silver-d2};
+    .content { color:@color-silver}
+
+    .date { float: right}
+  }
+}
+
+.comment-list {
+  .item {
+    .list-item-base();
+    .num {position: absolute; right:8px; top:@padding-top; font-size: 13px; color: @color-silver-d1; }
+    &.is_delete {
+      background: darken(@color-dark-white,1%);
+      .content { color:@color-silver-l2;}
+      .num {color:@color-silver-l2;}
+      .name  {
+        b, .loginname {color:@color-silver-l2;}
+      }
+    }
+  }
+}
+
+
+.P-comments-list {
+  .detail-box {
+   padding-bottom: 12px;
+    border-bottom: 1px solid @color-border;
+    .title { margin: 12px 0 4px;font-size: 30px;  color:@color-black-l2};
+    .time-bar {  margin: 0 -20px; padding: 4px 20px; font-size: 12px; background-color:@color-gray-l1; color: @color-silver-d2};
+    .date { float: right}
+    .desc {  line-height: 1.8; font-size: 14px; color:@color-silver};
+    .num { color:@color-red; font-weight: 700}
+  }
+}
+
+.P-idle-list {
+
+
+}
