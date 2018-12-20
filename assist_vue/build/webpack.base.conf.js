@@ -37,6 +37,10 @@ const webpackConfig = {
       '@': resolve('src'),
     }
   },
+  //无需打包的第三方类库
+  externals: {
+    'moment': 'moment',
+  },
   module: {
     rules: [
       {
