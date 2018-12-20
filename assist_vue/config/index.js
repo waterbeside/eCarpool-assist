@@ -6,13 +6,14 @@ const path = require('path')
 const glob = require('glob')
 
 var build = {
-  env: process.env.NODE_ENV,
+  // env: process.env.NODE_ENV,
   assetsRoot: path.resolve(__dirname, '../dist'),
   assetsSubDirectory: 'static',
   assetsPublicPath: '',
   productionSourceMap: false,
   devtool: '#source-map',
-  productionGzip: false,
+  // npm install --save-dev compression-webpack-plugin
+  productionGzip: true,
   productionGzipExtensions: ['js', 'css'],
   bundleAnalyzerReport: process.env.npm_config_report
 
