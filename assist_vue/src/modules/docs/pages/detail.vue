@@ -34,16 +34,15 @@ export default {
   methods :{
     init (){
       this.id = this.$route.params.id ? this.$route.params.id : 0;
-      console.log(this.id);
       this.getData();
     },
     getData (){
       this.$http.get(config.urls.docs+"/"+this.id).then(res=>{
-        console.log(res)
         if(res.data.code === 0){
-          let data = res.data.data
-          this.title = data.title
-          this.content = data.content
+          let data = res.data.data;
+          this.title = data.title;
+          document.title = this.title;
+          this.content = data.content;
         }
       }).catch(error=>{
         this.$vux.toast.text('网络好像不太畅通');

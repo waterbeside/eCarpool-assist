@@ -29,8 +29,12 @@ export default {
 
   watch: {
     // 更新页面所在位置，用于判断是前进页还是后退页
-
     '$route' (to, from) {
+      if (to.meta.title) {
+        document.title = to.meta.title;
+      }else{
+        document.title = '拼车报表';
+      }
       const toDepth = to.path.split('/').length
       const fromDepth = from.path.split('/').length
       if(to.path=="/"){

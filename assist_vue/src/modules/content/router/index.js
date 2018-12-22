@@ -28,7 +28,7 @@ const routes = [
     component (resolve) {
       require(['../pages/idle'], resolve)
     },
-    meta: {keepAlive: true }
+    meta: {keepAlive: true, title:"二手市场" }
   },
 
   // comment

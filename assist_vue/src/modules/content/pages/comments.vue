@@ -92,6 +92,7 @@ export default {
       this.$http.get(config.urls.public_idle+'/'+this.oid).then(res=>{
         if(res.data.code === 0){
           this.detailData = res.data.data;
+          document.title = this.detailData.title;
           this.detailData.post_time = moment(this.detailData.post_time).format('YYYY-MM-DD HH:mm')
         }else{
           this.$toast.center('加载失败，请稍候再试');
