@@ -12,6 +12,7 @@
 
 <script>
 import config from '@/configs'
+import cFuns from '@/utils/cFuns'
 
 export default {
   components: {
@@ -23,7 +24,7 @@ export default {
     return {
       id:0,
       title:'',
-      content:'加载中。。。'
+      content:'<i class="fa fa-spinner fa-spin"></i>'
 
     }
   },
@@ -33,20 +34,37 @@ export default {
   },
   methods :{
     init (){
+      var lang = cFuns.getLanguage();
+      this.content = '<div style="text-align:center; margin-top:30px; font-size:20px">\
+      <i class="fa fa-spinner fa-spin"></i>\
+      </div>'
+      this.title = ''
       this.id = this.$route.params.id ? this.$route.params.id : 0;
-      this.getData();
+      var cacheKey = "carpool.doc."+this.id+"."+lang;
+      var data =  sessionStorage ? sessionStorage.getItem(cacheKey) : false;
+      if(data){
+        this.content = data;
+      }else{
+        this.getData().then(res=>{
+          if(sessionStorage) sessionStorage.setItem(cacheKey,this.content);
+        });
+      }
     },
     getData (){
-      this.$http.get(config.urls.docs+"/"+this.id).then(res=>{
-        if(res.data.code === 0){
-          let data = res.data.data;
-          this.title = data.title;
-          document.title = this.title;
-          this.content = data.content;
-        }
-      }).catch(error=>{
-        this.$vux.toast.text('网络好像不太畅通');
+      return new Promise((resolve,reject)=>{
+        this.$http.get(config.urls.docs+"/"+this.id).then(res=>{
+          if(res.data.code === 0){
+            let data = res.data.data;
+            this.title = data.title;
+            document.title = this.title;
+            this.content = data.content;
+            resolve(res);
+          }
+        }).catch(error=>{
+          this.$vux.toast.text(this.$t("message.networkFail"));
+        })
       })
+
     }
 
 
@@ -57,8 +75,9 @@ export default {
 
   },
   activated (){
-    this.content = '加载中。。。'
-    this.title = ''
+
+
+
     this.init();
 
   }
