@@ -21,7 +21,7 @@ const routes = [
     meta: {keepAlive: true }
   },
 
-  // 主页
+  // 详情
   {
     path: '/:id',
     name: 'detail',
@@ -30,6 +30,16 @@ const routes = [
     },
     meta: {keepAlive: true }
   },
+  // 详情
+  {
+    path: '/:id/:language',
+    name: 'detail',
+    component (resolve) {
+      require(['../pages/detail'], resolve)
+    },
+    meta: {keepAlive: true }
+  },
+
 /*
   // 积分规则
   {

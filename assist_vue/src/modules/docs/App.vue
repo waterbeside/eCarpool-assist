@@ -33,6 +33,12 @@ export default {
     // 更新页面所在位置，用于判断是前进页还是后退页
 
     '$route' (to, from) {
+      var paramLang = to.params.language;
+      if(paramLang){
+        this.$store.dispatch('updateParamLang',paramLang);
+      }else{
+        this.$store.dispatch('updateParamLang',null);
+      }
       if (to.meta.title) {
         document.title = to.meta.title;
       }else{
@@ -48,11 +54,15 @@ export default {
     }
   },
   methods :{
-    init(){}
+    init(){
+    }
   },
   mounted () {
     this.init()
   },
-  activated () {}
+  activated () {
+
+
+  }
 }
 </script>
