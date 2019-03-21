@@ -12,6 +12,7 @@ function getBaseLanguage (dontFromCache){
     lang = localStorage.getItem('language');
     lang = lang ?  lang : localStorage.getItem('lang');
     lang = lang ?  lang : localStorage.getItem('lag');
+    // console.log(lang);
   }
   if(lang){
     return lang;

@@ -38,7 +38,7 @@ Vue.component('StepItem', StepItem)
 
 Vue.directive('focus', focus);
 
-Vue.use(ToastPlugin);;
+Vue.use(ToastPlugin);
 
 
 
