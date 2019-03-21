@@ -5,6 +5,7 @@ import "../../assets/css/bootstrap/bootstrap.less";
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import App from './App'
+import store from './store'
 import router from './router'
 import axios from '@/utils/axios';
 import cFuns from '@/utils/cFuns';
@@ -23,8 +24,9 @@ Vue.prototype.$http = axios;
 
 var _language = cFuns.getLanguage(1);
 var lang = cFuns.formartLanguage(_language);
-localStorage.setItem('language',_language);
-console.log(lang);
+if(localStorage){
+  localStorage.setItem('language',_language);
+}
 const i18n = new VueI18n({
   // locale: _language, // 语言标识
     locale: lang, // 语言标识
@@ -45,6 +47,7 @@ new Vue({
   el: '#app',
   i18n,
   router,
+  store,
   template: '<App/>',
   components: { App }
 })
