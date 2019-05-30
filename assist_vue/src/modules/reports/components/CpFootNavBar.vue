@@ -4,20 +4,20 @@
     <div   class="router-link cp-bar-tab-item" :class="{'active' : current=='charts'}">
       <router-link :to="{ name: 'charts' }" class="cp-item-link">
         <i class="cp-iconfont fa fa-line-chart"></i>
-        <div class="cp-bar-tab-label">报表</div>
+        <div class="cp-bar-tab-label">{{$t("message.reports.Report")}}</div>
       </router-link>
     </div>
     <div   class="router-link cp-bar-tab-item" :class="{'active' : current=='ranking'}">
       <router-link :to="{ name: 'ranking' }" class="cp-item-link">
         <i class="cp-iconfont fa fa-bar-chart"></i>
 
-        <div class="cp-bar-tab-label">排行榜</div>
+        <div class="cp-bar-tab-label">{{$t("message.reports.Ranking")}}</div>
       </router-link>
     </div>
     <div   class="router-link cp-bar-tab-item" :class="{'active' : current=='today'}">
       <router-link :to="{ name: 'today' }" class="cp-item-link">
         <i class="cp-iconfont fa fa-calendar"></i>
-        <div class="cp-bar-tab-label">今日</div>
+        <div class="cp-bar-tab-label">{{$t("message.reports.Today")}}</div>
       </router-link>
     </div>
   </div>

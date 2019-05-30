@@ -31,7 +31,7 @@ Vue.prototype.$http = axios;
 
 Vue.use(VueI18n);
 var _language = cFuns.getLanguage(1);
-var lang = cFuns.formartLanguage(_language);
+var lang = cFuns.formatLanguage(_language);
 localStorage.setItem('language',_language);
 console.log(lang);
 const i18n = new VueI18n({

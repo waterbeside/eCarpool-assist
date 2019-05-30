@@ -1,4 +1,6 @@
 import axios from 'axios'
+import cFuns from '@/utils/cFuns';
+
 import qs from 'qs'
 
 
@@ -6,39 +8,9 @@ var _language = false;
 var lang = "zh";
 
 function getBaseLanguage (dontFromCache){
-  dontFromCache = dontFromCache || 0;
-  let lang = "";
-  if(localStorage && !dontFromCache){
-    lang = localStorage.getItem('language');
-    lang = lang ?  lang : localStorage.getItem('lang');
-    lang = lang ?  lang : localStorage.getItem('lag');
-    // console.log(lang);
-  }
-  if(lang){
-    return lang;
-  }
-  let lang_s = "en";
-  if (navigator.language) {
-    lang_s = navigator.language;
-  }else {
-    lang_s = navigator.browserLanguage;
-  }
-  return lang_s;
+  return cFuns.getLanguage(dontFromCache)
 }
 
-function formartLanguage(_language){
-  var arrowLang = "zh,zh-tw,zh-hk,vi,en,"
-  var lang = _language;
-  var language_lower = _language.toLowerCase();
-  if(arrowLang.indexOf(language_lower) == -1){
-    lang = _language;
-  }
-  if(language_lower.indexOf('-')>0){
-    var langTempArr = language_lower.split('-');
-    lang = langTempArr[0];
-  }
-  return lang;
-}
 
 function getLanguage(){
   _language = getBaseLanguage();

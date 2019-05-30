@@ -11,34 +11,34 @@
                   <img class="cp-avatar " :src="inviter.avatar"  :onerror="'this.src=\''+defaultAvatar+'\';return false'">
                   {{inviter.name}}
                 </h5>
-                <h4>正在邀请您加入溢信群</h4>
-                <h5>在此登入即接受邀请</h5>
+                <h4>{{$t('message.invitation.InvitingToGroup')}}</h4>
+                <h5>{{$t('message.invitation.SignInAccept')}}</h5>
               </div>
-              <msg title="欢迎加入溢起拼车" description="快来下载APP，来免费拼车吧"   icon="" v-show="step==1 && status == 1" ></msg>
+              <msg :title="$t('message.invitation.WelcomeToJoin')" :description="$t('message.invitation.DownloadAppToCarpool')"   icon="" v-show="step==1 && status == 1" ></msg>
               <div v-show="step==1 && !status" class="text-center">
-                <h3>欢迎加入溢起拼车</h3>
+                <h3>{{$t('message.invitation.WelcomeToJoin')}}</h3>
                 <p class="text-center">
-                  快来下载APP，来免费拼车吧
+                  {{$t('message.invitation.DownloadAppToCarpool')}}
                 </p>
               </div>
 
 
-              <form class="form form-login form-horizontal"　 method="post" onsubmit="return false">
+              <form class="form form-login form-horizontal" method="post" onsubmit="return false">
 
                 <!-- step:0 -->
                 <div class="cp-step-item cp-step-item-0" v-show="step==0">
                   <div class="cp-form-group ">
                     <label  class="control-label "  for="phone"><i class="fa fa-id-card"></i> </label>
-                    <input type="text" class="form-control form-control-line  " name="username" placeholder="工号/帐号/手机号" v-model="formData.username" v-focus="isFocus.username" @focus="isFocus.username=true" @blur="isFocus.username=false">
+                    <input type="text" class="form-control form-control-line  " name="username" :placeholder="$t('message.user.employeeID')" v-model="formData.username" v-focus="isFocus.username" @focus="isFocus.username=true" @blur="isFocus.username=false">
                   </div>
 
                   <div class="cp-form-group ">
                     <label  class="control-label"  for="password"><i class="fa fa-lock"></i></label>
-                    <input type="password" class="form-control form-control-line    " name="password" placeholder="密码" v-model="formData.password" v-focus="isFocus.password" @focus="isFocus.password=true" @blur="isFocus.password=false">
+                    <input type="password" class="form-control form-control-line    " name="password" :placeholder="$t('message.user.password')" v-model="formData.password" v-focus="isFocus.password" @focus="isFocus.password=true" @blur="isFocus.password=false">
                   </div>
 
                   <div class="cp-tips-disclaimer">
-                    <check-icon :value.sync="agree"  type="plain" > 已经阅读并同意</check-icon><a class="cp-disclaimer-link" @click.prevent="showDisclaimer">《使用协议》</a>
+                    <check-icon :value.sync="agree"  type="plain" > {{$t('message.invitation.ReadAndAgreed')}}</check-icon><a class="cp-disclaimer-link" @click.prevent="showDisclaimer">《{{$t('message.Disclaimer')}}》</a>
 
                     <!-- <input type="checkbox" name="agree_disclaimer" id="agree_disclaimer" v-model="agree"><label class="label-checkbox" for="agree_disclaimer">已经阅读并同意<a href="">《使用协议》</a></label> -->
                   </div>
@@ -53,10 +53,10 @@
                     <qrcode value="http://m.esquel.cn/apps/gek/Carpool/" type="img" style=" text-align:center" :size="120"></qrcode>
                   </div>
                   <p>
-                    <a class="btn btn-primary btn-block btn-lg" href="http://m.esquel.cn/apps/gek/Carpool/downloadandroid.php"><i class="fa fa-android"></i> 安卓下载</a>
+                    <a class="btn btn-primary btn-block btn-lg" href="http://m.esquel.cn/apps/gek/Carpool/downloadandroid.php"><i class="fa fa-android" style="float:left; margin-top:2px"></i> Android</a>
                   </p>
                   <p>
-                    <a class="btn btn-primary  btn-block btn-lg" href="http://m.esquel.cn/apps/gek/Carpool/downloadios.php"><i class="fa fa-apple"></i> 苹果下载</a>
+                    <a class="btn btn-primary  btn-block btn-lg" href="http://m.esquel.cn/apps/gek/Carpool/downloadios.php"><i class="fa fa-apple" style="float:left;margin-top:2px"></i> iOS</a>
                   </p>
 
 
@@ -66,7 +66,7 @@
 
                 <div class="text-danger" id="callback-tips"></div>
                 <p class="cp-submitbtn-wrapper">
-                  <button class="btn btn-primary btn-lg  btn-block J-btn-submit" v-show="step===0"  :disabled="!isEnableNext" @click="signin">登入</button>
+                  <button class="btn btn-primary btn-lg  btn-block J-btn-submit" v-show="step===0"  :disabled="!isEnableNext" @click="signin">{{$t('message.SignIn')}}</button>
                 </p>
               </form>
               <!-- <router-link  class="cp-login-btn pull-right"  :to="{ name:'register', params: {link_code: link_code} }" v-show="step==0">
@@ -81,7 +81,7 @@
 
             <div style="width: 94%; max-width:640px;height:96%; background-color:#fff; margin:16px auto;border-radius:5px; ">
               <div style="position:relative;padding:10px;border-bottom:1px solid #DDD;">
-                <b>使用协议：</b>
+                <b>{{$t('message.Disclaimer')}}：</b>
                 <a style="padding:3px;" @click="isShowDisclaimer = false;"><i  class="fa fa-times pull-right"  ></i></a>
               </div>
               <div class="text-center" v-show="isLoadingDisclaimer">
@@ -92,7 +92,7 @@
 
 
              <div style="padding:20px 10px 10px;">
-               <button class="btn btn-primary btn-block" @click="isShowDisclaimer = false; agree = true;">同意</button>
+               <button class="btn btn-primary btn-block" @click="isShowDisclaimer = false; agree = true;">{{$t('message.agree')}}</button>
 
              </div>
             </div>
@@ -166,10 +166,10 @@ export default {
       this.$http.post(config.urls.signinInvitation,postData).then(res => {
         // console.log(res)
         if(res.data.code === 0) {
-          this.$vux.toast.text('登入成功');
+          this.$vux.toast.text(this.$t('message.user.SignInSuceesfully'));
           this.step ++
         }else {
-          this.$vux.toast.text('帐号或密码不正确');
+          this.$vux.toast.text(this.$t('message.user.PasswordIncorrect'));
 
         }
       })

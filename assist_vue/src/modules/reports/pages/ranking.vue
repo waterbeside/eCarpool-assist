@@ -3,11 +3,11 @@
 
         <div class="page-view-content">
           <div>
-            <h1 class="cp-title"  > 上月拼车排名</h1>
+            <h1 class="cp-title"  > {{$t("message.reports.LastMonthRanking")}}</h1>
             <div class="tab-head" >
                 <tab :line-width="1" v-model="tabIndex">
-                  <tab-item :key="0">司机</tab-item>
-                  <tab-item :key="1">乘客</tab-item>
+                  <tab-item :key="0">{{$t("message.driver")}}</tab-item>
+                  <tab-item :key="1">{{$t("message.passenger")}}</tab-item>
                 </tab>
             </div>
             <div v-show="tabIndex===0">
@@ -84,10 +84,10 @@ export default {
                   return rowIndex < 3 ? '<span style="color:red;font-weight: bold;">' + (rowIndex + 1) + '</span>' : rowIndex + 1
               },isFrozen: true
           },
-          {field: 'name', title:'名称',  width: this.name_width,  titleAlign: 'center',columnAlign:'center'},
+          {field: 'name', title: this.$t("message.reports.name"),  width: this.name_width,  titleAlign: 'center',columnAlign:'center'},
           // {field: 'uid', title: 'uid', width: 80, titleAlign: 'center',columnAlign:'center'},
-          {field: 'companyname', title: '厂部', width: 100, titleAlign: 'center',columnAlign:'center'},
-          {field: 'num', title: '<span style="margin-left:10px">人次</span>', width:100, titleAlign: 'left',columnAlign:'left',
+          {field: 'companyname', title: this.$t("message.reports.company"), width: 100, titleAlign: 'center',columnAlign:'center'},
+          {field: 'num', title: '<span style="margin-left:10px">'+this.$t("message.reports.personTime")+'</span>', width:100, titleAlign: 'left',columnAlign:'left',
           formatter: function (rowData,rowIndex,pagingIndex,field) {
             return '<span style="margin-left:10px">' + (rowData.num) + '</span>'
           }},

@@ -4,12 +4,12 @@
           <div class="row cp-statis-wrapper">
             <div class="cp-statis-item col-xs-6">
               <statis-item  :num="statis.people"   icon="fa fa-male" :duration="1">
-                <div slot="title" class="title">总拼车人次</div>
+                <div slot="title" class="title"> {{$t("message.reports.totalTrips")}} </div>
               </statis-item>
             </div>
             <div class="cp-statis-item col-xs-6">
               <statis-item   :num="statis.carbon"   icon="fa fa-leaf" :duration="1">
-                <div slot="title" class="title">减少碳排放(KG)</div>
+                <div slot="title" class="title"> {{$t("message.reports.ReduceCarbonEmissions")}}(KG)</div>
               </statis-item>
             </div>
           </div>
@@ -49,7 +49,7 @@ export default {
       //构设图表的设置。
       chartOption: {
         title: {
-            text: '拼车统计',
+            text: this.$t("message.reports.CarpoolingStatistics"),
             padding: [8,4,4,8],
             textStyle:{color:"#74697e"}
         },
@@ -97,7 +97,7 @@ export default {
          series: [
              {
                  type: 'line',
-                 name: '总乘客人次 ',
+                 name: this.$t("message.reports.totalDrivers"),
                  label: {
                     normal: { show: true, position: 'top', color:"#226728" }
                  },
@@ -108,7 +108,7 @@ export default {
              },
              {
                  type: 'line',
-                 name: '总司机人次',
+                 name: this.$t("message.reports.totalPassengers"),
                  label: {
                     normal: {   show: true, position: 'top',  color:"#794a32" }
                  },
@@ -142,9 +142,14 @@ export default {
      */
     getStatis (){
       this.$http.get(config.urls.reports.reputationSummary).then((res)=>{
-        let data = res.data[0];
-        this.statis.people = data.sumtrip;
-        this.statis.carbon = data.sumtrip *7.6*2.3/10 ;
+// console.log(res);
+        if(res.data.code === 0){
+          let data = res.data.data;
+          this.statis.people = parseFloat(data.sumtrip);
+          // this.statis.carbon = data.sumtrip *7.6*2.3/10 ;
+          this.statis.carbon = data.sumtrip * 7*0.0627 ;
+        }
+        
       }).catch(error => {
 
       })

@@ -22,8 +22,8 @@ Vue.use(VueI18n);
 Vue.use(ToastPlugin);
 Vue.prototype.$http = axios;
 
-var _language = cFuns.getLanguage(1);
-var lang = cFuns.formartLanguage(_language);
+var _language = cFuns.getLanguage();
+var lang = cFuns.formatLanguage(_language);
 if(localStorage){
   localStorage.setItem('language',_language);
 }

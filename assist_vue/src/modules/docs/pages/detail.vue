@@ -50,14 +50,14 @@ export default {
       this.title = ''
       this.id = this.$route.params.id ? this.$route.params.id : 0;
       var cacheKey = "carpool.doc."+this.id+"."+lang;
-      var data =  sessionStorage ? sessionStorage.getItem(cacheKey) : false;
-      if(data){
-        this.content = data;
-      }else{
+      // var data =  sessionStorage ? sessionStorage.getItem(cacheKey) : false;
+      // if(data){
+      //   this.content = data;
+      // }else{
         this.getData().then(res=>{
           if(sessionStorage) sessionStorage.setItem(cacheKey,this.content);
         });
-      }
+      // }
     },
     getData (){
       var url = this.paramLang ? config.urls.docs+"/"+this.id+"?_language="+this.paramLang :  config.urls.docs+"/"+this.id;

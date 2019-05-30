@@ -2,8 +2,8 @@
 
    <view-box id="Page-today"       >
         <div class="page-view-content">
-          <h1 class="cp-title" > 今日拼车
-            <div class="cp-total"> 今日拼车数 {{listTotal}}</div>
+          <h1 class="cp-title" > {{$t("message.reports.TodayCarpool")}}
+            <div class="cp-total"> {{$t("message.reports.TodayCarpoolTotal")}} {{listTotal}}</div>
           </h1>
           <div class="tabble-wrapper" style="position: absolute; top:35px; right:0; bottom:0;  left:0;">
             <v-table
@@ -51,12 +51,12 @@ export default {
     },
     columns (){
       return [
-        {field: 'carnumber', title:'车牌', width: 100, titleAlign: 'center',columnAlign:'center'},
-        {field: 'name_o', title: '司机', width: this.field_width, titleAlign: 'center',columnAlign:'center'},
-        {field: 'companyname_o', title: '厂部', width: this.field_width_2, titleAlign: 'center',columnAlign:'center'},
-        {field: 'name_p', title: '乘客', width: this.field_width, titleAlign: 'center',columnAlign:'center'},
-        {field: 'companyname_p', title: '厂部', width: this.field_width_2, titleAlign: 'center',columnAlign:'center'},
-        {field: 'date_time', title: '时间', width: 160, titleAlign: 'center',columnAlign:'center'}
+        {field: 'carnumber', title:this.$t("message.licensePlate"), width: 100, titleAlign: 'center',columnAlign:'center'},
+        {field: 'name_o', title: this.$t("message.driver"), width: this.field_width, titleAlign: 'center',columnAlign:'center'},
+        {field: 'companyname_o', title: this.$t("message.reports.company"), width: this.field_width_2, titleAlign: 'center',columnAlign:'center'},
+        {field: 'name_p', title: this.$t("message.passenger"), width: this.field_width, titleAlign: 'center',columnAlign:'center'},
+        {field: 'companyname_p', title: this.$t("message.reports.company"), width: this.field_width_2, titleAlign: 'center',columnAlign:'center'},
+        {field: 'date_time', title: this.$t("message.time"), width: 160, titleAlign: 'center',columnAlign:'center'}
         ]
     }
   },

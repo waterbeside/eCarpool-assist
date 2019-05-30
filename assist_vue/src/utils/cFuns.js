@@ -69,6 +69,7 @@ var cFuns = {
     lct.href = url;
   },
 
+ 
   getLanguage (dontFromCache){
     dontFromCache = dontFromCache || 0;
     let lang = "";
@@ -89,7 +90,8 @@ var cFuns = {
     return _language;
   },
 
-  formartLanguage(_language){
+
+  formatLanguage(_language){
     var arrowLang = "zh,zh-tw,zh-hk,vi,en,"
     var lang = _language;
     var language_lower = _language.toLowerCase();

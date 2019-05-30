@@ -3,15 +3,16 @@
         <div class="page-view-content">
           <div class=" text-center" >
             <div class="cp-qrcode-wrapper" style="margin-top:100px;">
-              <qrcode value="http://m.esquel.cn/apps/gek/Carpool/" type="img" style=" text-align:center" :size="168" fg-color="rgb(21, 53, 68)"></qrcode>
+              <qrcode value="http://esqueler.com" type="img" style=" text-align:center" :size="168" fg-color="rgb(21, 53, 68)"></qrcode>
               <img class="cp-logo" src="static/images/carpool80.png"  />
             </div>
             <h4 class="cp-title">
-              溢起拼车
+                {{$t("message.esquel_carpool")}}
             </h4>
             <article class="cp-article">
               <p>
-                  溢路上有你，挤一点也愿意
+                  <!-- 溢路上有你，挤一点也愿意 -->
+                  {{$t("message.carpool_left_join_trip")}}
               </p>
             </article>
 
@@ -65,7 +66,9 @@ export default {
 @qcode-size:168px;
 @logo-size:34px;
 
-.cp-viewBox { background: url("../../../assets/images/aboutus_qcode_boot.jpg") center bottom no-repeat ; background-size: 100% auto;}
+.cp-viewBox {
+  //  background: url("../../../assets/images/aboutus_qcode_boot.jpg") center bottom no-repeat ;
+ background-size: 100% auto;}
 .cp-qrcode-wrapper { position: relative; width: @qcode-size; margin: 0 auto;
   .cp-logo { position: absolute; top:@qcode-size/2-@logo-size/2; left: @qcode-size/2-@logo-size/2; width: @logo-size; border-radius: 4px; border:2px solid #FFF}
 }
