@@ -23,7 +23,7 @@
               <msg title="欢迎加入溢起拼车" description=""   icon="" v-show="step==2" ></msg>
 
 
-              <form class="form form-register form-horizontal"　 method="post" onsubmit="return false">
+              <form class="form form-register form-horizontal" method="post" onsubmit="return false">
                  <div>
                   <step class="cp-step" v-model="step"  gutter="20px">
                     <step-item title="设置帐号"></step-item>
@@ -75,12 +75,11 @@
                     <popup-radio class="cp-select" title="" :options="sexs" v-model="formData.sex" placeholder="性别"></popup-radio>
                     <!-- <input type="text" class="form-control form-control-line  " name="conpany" placeholder="" v-model="formData.conpany"> -->
                   </div>
-                  <div class="cp-form-group ">
+                  <!-- <div class="cp-form-group ">
                     <label  class="control-label "  for="company"><i class="fa fa-building"></i> </label>
                     <popup-radio class="cp-select" title="" :options="companys" v-model="formData.company" placeholder="选择公司">
                     </popup-radio>
-                    <!-- <input type="text" class="form-control form-control-line  " name="conpany" placeholder="" v-model="formData.conpany"> -->
-                  </div>
+                  </div> -->
 
                   <!--<div class="cp-form-group ">
                     <label  class="control-label "  for="loginname"><i class="fa fa-id-card"></i> </label>
@@ -318,30 +317,30 @@ export default {
     /**
      * 取得公司列表。
      */
-    getCompany(){
-      let _this = this;
+    // getCompany(){
+    //   let _this = this;
 
-      _this.$http.get(config.urls.getCompanys).then(res => {
-        // console.log(res)
-        if(res.data.code === 0) {
-          let data = res.data.data;
-          if(data.lists.length > 0){
-            _this.companys = [];
-            data.lists.forEach((value,index,arr)=>{
-              let vStr = value.company_name == value.short_name ?  value.short_name : value.company_name + ' ('+value.short_name+') ';
-              _this.companys[index]  = {
-                key:value.company_id,
-                value: vStr,
-              }  ;
-            });
-            _this.companys.push({
-              key:0,
-              value: '其它',
-            });
-          }
-        }
-      })
-    },
+    //   _this.$http.get(config.urls.getCompanys).then(res => {
+    //     // console.log(res)
+    //     if(res.data.code === 0) {
+    //       let data = res.data.data;
+    //       if(data.lists.length > 0){
+    //         _this.companys = [];
+    //         data.lists.forEach((value,index,arr)=>{
+    //           let vStr = value.company_name == value.short_name ?  value.short_name : value.company_name + ' ('+value.short_name+') ';
+    //           _this.companys[index]  = {
+    //             key:value.company_id,
+    //             value: vStr,
+    //           }  ;
+    //         });
+    //         _this.companys.push({
+    //           key:0,
+    //           value: '其它',
+    //         });
+    //       }
+    //     }
+    //   })
+    // },
 
     /**
      * 取得免责声明内容
@@ -436,7 +435,7 @@ export default {
     this.link_code = this.$route.params.link_code;
     this.$router.push({name:'login',params: {link_code: this.link_code}})
     this.getInvitation();
-    this.getCompany();
+    // this.getCompany();
 
   }
 }
