@@ -3,7 +3,7 @@
         <div class="page-view-content">
           <div class=" text-center" >
             <div class="cp-qrcode-wrapper" style="margin-top:100px;">
-              <qrcode value="http://esqueler.com" type="img" style=" text-align:center" :size="168" fg-color="rgb(21, 53, 68)"></qrcode>
+              <qrcode :value="url" type="img" style=" text-align:center" :size="168" fg-color="rgb(21, 53, 68)"></qrcode>
               <img class="cp-logo" src="static/images/carpool80.png"  />
             </div>
             <h4 class="cp-title">
@@ -37,13 +37,16 @@ export default {
 
   data () {
     return {
+     is_overseas : 0,
+
 
 
     }
   },
   computed : {
-
-
+    url (){
+      return this.is_overseas ? 'http://esqueler.com' : 'http://m.esquel.cn/apps/gek/Carpool/'
+    }
   },
   methods :{
 
@@ -55,6 +58,9 @@ export default {
 
   },
   activated (){
+    if(localStorage){
+      this.is_overseas =  localStorage.getItem('is_overseas');
+    };
 
   }
 }
