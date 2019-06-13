@@ -7,7 +7,7 @@ const vueLoaderConfig = require('./vue-loader.conf')
 const vuxLoader = require('vux-loader')
 const entries = utils.getEntry('./src/modules/**/main.js')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
@@ -26,9 +26,9 @@ const webpackConfig = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    publicPath: process.env.NODE_ENV === 'production' ?
+      config.build.assetsPublicPath :
+      config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -42,8 +42,7 @@ const webpackConfig = {
     'moment': 'moment',
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
@@ -76,7 +75,11 @@ const webpackConfig = {
           limit: 10000,
           name: utils.assetsPath('assets/fonts/[name].[hash:7].[ext]')
         }
-      }
+      },
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
+      },
     ]
   },
   node: {
@@ -95,8 +98,7 @@ const webpackConfig = {
 
 // 原来的 module.exports 代码赋值给变量 webpackConfig
 module.exports = vuxLoader.merge(webpackConfig, {
-  plugins: [
-    {
+  plugins: [{
       name: 'vux-ui'
     },
     {

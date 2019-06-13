@@ -6,11 +6,14 @@ const sourceMapEnabled = isProduction
   ? config.build.productionSourceMap
   : config.dev.cssSourceMap
 
+const loaders = utils.cssLoaders({
+  sourceMap: sourceMapEnabled,
+  extract: isProduction,
+  // i18n: '@kazupon/vue-i18n-loader',
+});
+
 module.exports = {
-  loaders: utils.cssLoaders({
-    sourceMap: sourceMapEnabled,
-    extract: isProduction
-  }),
+  loaders,
   cssSourceMap: sourceMapEnabled,
   cacheBusting: config.dev.cacheBusting,
   transformToRequire: {
