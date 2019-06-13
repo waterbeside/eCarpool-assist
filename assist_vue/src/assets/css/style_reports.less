@@ -1,6 +1,8 @@
 @import "_base.less";
 
-body { background: #FCFCFC}
+body { background: #fcfcfc}
+.weui-cell p { margin:0}
+label.weui-cell { margin:0}
 /* 数据统计项 */
 .cp-statis-item {
   display: inline-block; text-align: center;  padding: 10px 15px;
@@ -43,4 +45,29 @@ body { background: #FCFCFC}
     &.hasSticky { margin-bottom: 44px;}
   }
   .cp-sticky { position: fixed; top:0; width: 100%}
+}
+
+
+
+
+.filter-box {
+  .filter-time {
+    .weui-cell {
+      font-size: 14px;
+    }
+  }
+  .filter-showData , .filter-department   {
+    
+    .weui-cells .weui-cell__bd {
+      font-size: 14px; font-weight: 400;
+    }
+    .weui-cells_checkbox {
+      .weui-icon-checked {
+          margin-right: -8px;
+        &::before {
+          font-size: 18px;
+        }
+      }
+    } 
+  }
 }

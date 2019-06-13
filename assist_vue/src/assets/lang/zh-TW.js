@@ -11,7 +11,20 @@ export default  {
     "licensePlate":"车牌",
     "time":"时间",
     "Disclaimer":"使用协议",
+    "SignIn":"登入",
+    "agree":"同意",
+    "cancel": "取消",
+    "ok": "确认",
+    
 
+    //invitation
+    "invitation":{
+      "InvitingToGroup":"正在邀请您加入溢信群",
+      "SignInAccept":"在此登入即接受邀请",
+      "DownloadAppToCarpool":"快来下载APP，来免费拼车吧",
+      "WelcomeToJoin":"欢迎加入溢起拼车",
+      "ReadAndAgreed":"已经阅读并同意",
+    },
 
     //user
     "user" : {
@@ -22,6 +35,8 @@ export default  {
       "phone_number_not_need_merge":"该手机号无需合并",
       "phone_number_cannot_be_empty":"手机号不能为空",
       "mergeSuccess":"合并成功",
+      "SignInSuceesfully":"登入成功",
+      "PasswordIncorrect":"帐号或密码不正确"
     },
 
     //sms code
@@ -49,6 +64,11 @@ export default  {
       "personTime":"人次",
       "TodayCarpool":"今日拼车",
       "TodayCarpoolTotal":"今日拼车总数",
+      
+      "filter": {
+        "start_time": "开始月份",
+        "end_time": "结束月份",
+      }
 
     },
     

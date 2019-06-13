@@ -13,6 +13,8 @@ export default  {
     "Disclaimer":"使用协议",
     "SignIn":"登入",
     "agree":"同意",
+    "cancel": "取消",
+    "ok": "确认",
     
 
     //invitation
@@ -62,6 +64,11 @@ export default  {
       "personTime":"人次",
       "TodayCarpool":"今日拼车",
       "TodayCarpoolTotal":"今日拼车总数",
+      
+      "filter": {
+        "start_time": "开始月份",
+        "end_time": "结束月份",
+      }
 
     },
     

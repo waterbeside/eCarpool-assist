@@ -13,6 +13,8 @@ export default  {
     "Disclaimer":"Disclaimer",
     "SignIn":"Sign in",
     "agree":"Đồng ý",
+    "cancel": "Cancel",
+    "ok": "OK",
 
     //invitation
     "invitation":{
@@ -63,6 +65,11 @@ export default  {
       "personTime":"Person-Time",
       "TodayCarpool":"Báo cáo đi chung xe hôm nay",
       "TodayCarpoolTotal":"Total today",
+
+      "filter":{
+        "start_time": "Start month",
+        "end_time": "End month",
+      }
     },
 
 
