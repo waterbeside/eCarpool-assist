@@ -8,6 +8,7 @@
               <p v-show="isShowTest" >language: <b>{{lag}}</b></p>
               <p v-show="isShowTest">ios_version: <b>{{ios_version}}</b></p>
               <p v-show="isShowTest" >android_version: <b>{{android_version}}</b></p>
+              <p v-show="isShowTest" >is_overseas: <b>{{is_overseas}}</b></p>
             </article>
 
 
@@ -26,7 +27,6 @@ export default {
   components: {
 
   },
-
   data () {
     return {
       jwt : '',
@@ -34,7 +34,7 @@ export default {
       isShowTest:true,
       ios_version:'',
       android_version:'',
-
+      is_overseas:'',
     }
   },
   computed : {
@@ -59,6 +59,7 @@ export default {
     this.lag = localStorage.getItem('language');
     this.ios_version = localStorage.getItem('ios_version');
     this.android_version = localStorage.getItem('android_version');
+    this.is_overseas = localStorage.getItem('is_overseas');
   }
 }
 </script>
