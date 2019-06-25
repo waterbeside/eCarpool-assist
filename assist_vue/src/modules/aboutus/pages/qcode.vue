@@ -14,6 +14,7 @@
                   <!-- 溢路上有你，挤一点也愿意 -->
                   {{$t("message.carpool_left_join_trip")}}
               </p>
+              <p style="color:#eee">{{is_overseas}} {{url}}</p>
             </article>
 
 
@@ -45,22 +46,26 @@ export default {
   },
   computed : {
     url (){
-      return this.is_overseas ? 'http://esqueler.com' : 'http://m.esquel.cn/apps/gek/Carpool/'
+      return this.is_overseas == 1 ? 'http://esqueler.com' : 'http://m.esquel.cn/apps/gek/Carpool/'
     }
   },
   methods :{
-
+    init(){
+      if(localStorage){
+        setTimeout(()=>{
+          this.is_overseas =  localStorage.getItem('is_overseas');
+        },500);
+      };
+    }
 
 
   },
 
   created () {
-
+    this.init();
   },
   activated (){
-    if(localStorage){
-      this.is_overseas =  localStorage.getItem('is_overseas');
-    };
+    this.init();
 
   }
 }
@@ -82,6 +87,5 @@ export default {
 .cp-article { color:rgb(76,126,146)}
 @media (min-width: 768px){
   .cp-viewBox {  background-size: 400px auto;}
-
 }
 </style>
