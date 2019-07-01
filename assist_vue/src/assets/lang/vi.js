@@ -15,6 +15,7 @@ export default  {
     "agree":"Đồng ý",
     "cancel": "Cancel",
     "ok": "OK",
+    "filter": "Bộ lọc",
 
     //invitation
     "invitation":{
@@ -52,11 +53,11 @@ export default  {
     //拼车报表
     "reports" : {
       "totalTrips": "Total trips",
-      "ReduceCarbonEmissions":'Reduce carbon',
-      "CarpoolingStatistics":'',
-      "Report":'Báo cáo',
-      "Ranking":'Xếp hạng',
-      "Today":'Hôm nay',
+      "ReduceCarbonEmissions":"Reduce carbon",
+      "CarpoolingStatistics":"",
+      "Report":"Báo cáo",
+      "Ranking":"Xếp hạng",
+      "Today":"Hôm nay",
       "totalDrivers":"Số tài xế",
       "totalPassengers":"Số hành khách",
       "LastMonthRanking":"Bảng xếp hạng tháng trước",
@@ -65,10 +66,23 @@ export default  {
       "personTime":"Person-Time",
       "TodayCarpool":"Báo cáo đi chung xe hôm nay",
       "TodayCarpoolTotal":"Total today",
+      "CarpoolPersonTime" : "Carpool person-time",
+
 
       "filter":{
         "start_time": "Start month",
         "end_time": "End month",
+        "total" : "Tổng cộng",
+        "dateRange": "Phạm vi ngày",
+        "displayData": "Hiển thị dữ liệu",
+        "branchFactory" : "Văn phòng chi nhánh",
+        "selectLimitNum" : "Chọn tối đa {num}",
+      },
+      "showType": {
+        "拼车行程数":"Số chuyến đi chung xe",
+        "参与司机数":"Số lượng các tài xế tham gia",
+        "参与乘客数":"Số lượng hành khách tham gia",
+        "参与人数":"Số lượng người tham gia",
       }
     },
 

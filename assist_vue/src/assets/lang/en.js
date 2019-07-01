@@ -14,6 +14,8 @@ export default {
     "agree": "Agree",
     "cancel": "Cancel",
     "ok": "OK",
+    "filter": "Filter",
+
 
     //invitation
     "invitation": {
@@ -52,11 +54,11 @@ export default {
     //拼车报表
     "reports": {
       "totalTrips": "Total trips",
-      "ReduceCarbonEmissions": 'Reduce carbon',
-      "CarpoolingStatistics": '',
-      "Report": 'Report',
-      "Ranking": 'Ranking',
-      "Today": 'Today',
+      "ReduceCarbonEmissions": "Reduce carbon",
+      "CarpoolingStatistics": "",
+      "Report": "Report",
+      "Ranking": "Ranking",
+      "Today": "Today",
       "totalDrivers": "Total drivers",
       "totalPassengers": "Total passengers",
       "LastMonthRanking": "Last month's carpool ranking",
@@ -65,9 +67,22 @@ export default {
       "personTime": "Person-Time",
       "TodayCarpool": "Today's carpool report",
       "TodayCarpoolTotal": "Total today",
+      "CarpoolPersonTime" : "Carpool person-time",
+      
       "filter": {
         "start_time": "Start month",
         "end_time": "End month",
+        "total" : "Total",
+        "dateRange": "Date range",
+        "displayData": "Display data",
+        "branchFactory" : "Branch factory",
+        "selectLimitNum" : "Select up to {num}",
+      },
+      "showType": {
+        "拼车行程数":"Number of trips",
+        "参与司机数":"Number of drivers",
+        "参与乘客数":"Number of passengers",
+        "参与人数"  :"Number of participants",
       }
     },
 

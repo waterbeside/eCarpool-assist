@@ -15,6 +15,7 @@ export default  {
     "agree":"同意",
     "cancel": "取消",
     "ok": "确认",
+    "filter": "筛选",
     
 
     //invitation
@@ -50,24 +51,39 @@ export default  {
 
     //拼车报表
     "reports" : {
-      "totalTrips":"总拼车人次",
-      "ReduceCarbonEmissions":'减少碳排放',
-      "CarpoolingStatistics":'拼车统计',
-      "Report":'报表',
-      "Ranking":'排行榜',
-      "Today":'今天',
+      "totalTrips":"总行程数",
+      "ReduceCarbonEmissions":"减少碳排放",
+      "CarpoolingStatistics":"拼车统计",
+      "Report":"报表",
+      "Ranking":"排行榜",
+      "Today":"今天",
       "totalDrivers":"总司机人次",
       "totalPassengers":"总乘客人次",
       "LastMonthRanking":"上月拼车排名",
       "name":"名称",
       "company":"厂部",
       "personTime":"人次",
+      "CarpoolPersonTime" : "总拼车人次",
+
       "TodayCarpool":"今日拼车",
       "TodayCarpoolTotal":"今日拼车总数",
-      
+    
       "filter": {
         "start_time": "开始月份",
         "end_time": "结束月份",
+        "total" : "合计",
+        "dateRange": "日期范围",
+        "displayData": "显示数据",
+        "branchFactory" : "选择分厂",
+        "selectLimitNum" : "最多选{num}个",
+        
+      },
+      
+      "showType": {
+        "拼车行程数":"拼车行程数",
+        "参与司机数":"参与司机数",
+        "参与乘客数":"参与乘客数",
+        "参与人数":"参与人数",
       }
 
     },
