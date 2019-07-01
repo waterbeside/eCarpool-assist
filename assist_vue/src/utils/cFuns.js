@@ -224,12 +224,11 @@ var cFuns = {
   },
 
   strToColor(str){
-    let code = md5(str).slice(0,12).charCodeAt();
-    code = code/Math.PI
+    let code = md5(md5(str)).slice(8,24).charCodeAt();
+    code = Math.sqrt(code/Math.PI)*20;
     let codeArr = (code+'').split('.');
     code = parseFloat('0.'+codeArr[1]);
     let color = '#' + Math.floor((code)* 0xffffff).toString(16);
-
     return color;
   },
   

@@ -72,10 +72,13 @@ export default  {
         "start_time": "开始月份",
         "end_time": "结束月份",
         "total" : "合计",
+        "allBranches" : "所有分厂",
         "dateRange": "日期范围",
         "displayData": "显示数据",
         "branchFactory" : "选择分厂",
         "selectLimitNum" : "最多选{num}个",
+        "selectAtLeastOne" : "最少选择一个",
+        "selectAtLeastOneBrannch" : "最少选择一个分厂",
       },
       "showType": {
         "拼车行程数":"拼车行程数",

@@ -13,6 +13,7 @@ import { md5 } from 'vux'
 // 引入 ECharts 主模块
 import echarts from "echarts/lib/echarts";
 import "echarts/lib/chart/line";
+import "echarts/lib/chart/bar";
 // 引入提示框和标题组件
 import "echarts/lib/component/tooltip";
 import "echarts/lib/component/title";
@@ -94,6 +95,7 @@ export default {
             //创建x轴系列
             let series = [];
             let months = [];
+            let slength = this.filterData.department.length;
             for(let month in s_list){
               months.push(month);
               let lists = s_list[month];
@@ -109,8 +111,11 @@ export default {
                       series[series_i].name =  departmentData.name ;
                       series[series_i].itemStyle = {color:cFuns.strToColor(departmentData.fullname)};
                     }else{
-                      series[series_i].name =  this.$t("message.reports.filter.total");
-                      series[series_i].itemStyle = {color:cFuns.strToColor('_Total_')};
+                      series[series_i].name =  this.$t("message.reports.filter.allBranches");
+                      series[series_i].itemStyle = {color:"#9e88a7"};
+                    }
+                    if(slength > 1){
+                      series[series_i].areaStyle = null;
                     }
                     
                   }

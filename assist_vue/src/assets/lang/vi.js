@@ -73,10 +73,13 @@ export default  {
         "start_time": "Start month",
         "end_time": "End month",
         "total" : "Tổng cộng",
+        "allBranches" : "Tất cả",
         "dateRange": "Phạm vi ngày",
         "displayData": "Hiển thị dữ liệu",
         "branchFactory" : "Văn phòng chi nhánh",
         "selectLimitNum" : "Chọn tối đa {num}",
+        "selectAtLeastOne" : "Chọn ít nhất một",
+        "selectAtLeastOneBrannch" : "Chọn ít nhất một chi nhánh",
       },
       "showType": {
         "拼车行程数":"Số chuyến đi chung xe",

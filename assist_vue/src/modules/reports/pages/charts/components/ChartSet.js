@@ -5,7 +5,8 @@ const ChartSet =  {
     title: {
       text: i18n.t("message.reports.CarpoolingStatistics"),
       padding: [8, 4, 4, 8],
-      textStyle: { color: "#74697e" }
+      textStyle: { color: "#74697e" ,fontSize:'20'},
+      // x: 'center',
     },
     tooltip: {
       trigger: "axis",
@@ -16,35 +17,35 @@ const ChartSet =  {
         }
       }
     },
-    dataZoom: [
-      {
-        show: true,
-        realtime: true,
-        start: 0,
-        end: 100
-      },
-      {
-        type: "inside",
-        realtime: true,
-        start: 0,
-        end: 100
-      }
-    ],
-    // legend: {
-    //   top: 8,
-    //   right: 10
-    // },
+    // dataZoom: [
+    //   {
+    //     show: true,
+    //     realtime: true,
+    //     start: 0,
+    //     end: 100
+    //   },
+    //   {
+    //     type: "inside",
+    //     realtime: true,
+    //     start: 0,
+    //     end: 100
+    //   }
+    // ],
+    legend: {
+      top: 40,
+      right: 10
+    },
     grid: {
-      top: "44px",
+      top: "68px",
       left: "3%",
       right: "8%",
-      bottom: "50px",
+      bottom: "12px",
       containLabel: true
     },
 
     xAxis: {
       type: "category",
-      boundaryGap: true,
+      boundaryGap: false,
       data: ["2018", "2017"]
     },
     yAxis: { type: "value" },
@@ -60,7 +61,6 @@ const ChartSet =  {
         smooth: true,
         data: [0, 0]
       },
-      
     ]
   },
   serieItemDefault: {
@@ -69,7 +69,7 @@ const ChartSet =  {
     label: {
       normal: { show: true, position: "top", color: "#794a32" }
     },
-    areaStyle: { normal: {} },
+    areaStyle: {type: 'default'},
     itemStyle: { color: "#ec7751" },
     smooth: true,
     data: []

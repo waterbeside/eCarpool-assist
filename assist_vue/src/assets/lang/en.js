@@ -73,10 +73,13 @@ export default {
         "start_time": "Start month",
         "end_time": "End month",
         "total" : "Total",
+        "allBranches" : "All branches",
         "dateRange": "Date range",
         "displayData": "Display data",
         "branchFactory" : "Branch factory",
         "selectLimitNum" : "Select up to {num}",
+        "selectAtLeastOne" : "Choose at least one",
+        "selectAtLeastOneBrannch" : "Choose at least one branch factory",
       },
       "showType": {
         "拼车行程数":"Number of trips",
