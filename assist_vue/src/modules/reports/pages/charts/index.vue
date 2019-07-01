@@ -1,18 +1,26 @@
 <template>
-  <drawer-layout drawer-position="right" :drawable-width="100" :enable="true" @slide-end="drawerChange" @mask-click="hideFilterBox" ref='drawerBox'>
+  <drawer-layout
+    drawer-position="right"
+    :drawable-width="100"
+    :enable="true"
+    @slide-end="drawerChange"
+    @mask-click="hideFilterBox"
+    ref="drawerBox"
+  >
     <div class="drawer-content" slot="drawer">
-      <chart-filter-box 
-      @on-cancel="hideFilterBox" @on-confirm="confirmFilterBox" 
-      :is-show="is_showFilter" :filter-data="filterData"
-      >
-      </chart-filter-box>
+      <chart-filter-box
+        @on-cancel="hideFilterBox"
+        @on-confirm="confirmFilterBox"
+        :is-show="is_showFilter"
+        :filter-data="filterData"
+      ></chart-filter-box>
     </div>
     <view-box ref="viewBox" id="Page-charts" slot="content">
       <div class="page-view-content">
         <div class="row cp-statis-wrapper">
           <div class="cp-statis-item col-xs-6">
-            <statis-item :num="statis.people" icon="fa fa-male" :duration="1">
-              <div slot="title" class="title">{{$t("message.reports.totalTrips")}}</div>
+            <statis-item :num="statis.trip_pt" icon="fa fa-male" :duration="1">
+              <div slot="title" class="title">{{$t("message.reports.CarpoolPersonTime")}}</div>
             </statis-item>
           </div>
           <div class="cp-statis-item col-xs-6">
@@ -22,10 +30,13 @@
           </div>
         </div>
         <div class="btn-filter-bar" @click="showFilterBox">
-          <div class="title">图表：</div>
-          <label>筛选 <i class="fa fa-angle-right"></i></label>
-          </div>
-        <chart-box ref="chartBox"></chart-box>
+          <div class="title"><i class="fa fa-line-chart"></i> {{filterData.date_start}} ~ {{filterData.date_end}}</div>
+          <label>
+            {{$t('message.filter')}}
+            <i class="fa fa-angle-right"></i>
+          </label>
+        </div>
+        <chart-box ref="chartBox" :filter-data="filterData" v-if="showChart"></chart-box>
         <!-- <div id="chart" class="cp-chart-content"></div> -->
       </div>
       <cp-foot-nav-bar current="charts"></cp-foot-nav-bar>
@@ -40,7 +51,7 @@ import DrawerLayout from "@/components/DrawerLayout";
 import CpFootNavBar from "../../components/CpFootNavBar";
 import ChartFilterBox from "./components/ChartFilterBox";
 import ChartBox from "./components/ChartBox";
-
+import cFuns from "@/utils/cFuns";
 
 export default {
   components: {
@@ -54,25 +65,32 @@ export default {
   data() {
     return {
       statis: {
-        people: 0,
+        trip_pt: 0,
         distance: 0,
         carbon: 0
       },
+      showChart: false,
       is_showFilter: 0,
-      filterData:{
-        imeRange: "years",
-        date_start: null,
-        date_end: null,
-        showData: [1,2,3],
+      filterData: {
+        date_start: cFuns.formatDate(new Date(),'yyyy-mm'),
+        date_end: cFuns.formatDate(new Date(),'yyyy-mm'),
+        show_type: [1],
         department: [0]
-      },
-
-      
+      }
     };
   },
   computed: {},
   methods: {
-   
+    init(){
+      let nowDate = new Date();
+      let year = nowDate.getFullYear();
+      let month = nowDate.getMonth() + 1;
+      let s_month = month == 12 ? 1 : cFuns.fixZero(month + 1 ) ;
+      let s_year  = month == 12 ? year : year - 1;
+      this.filterData.date_start = s_year+ '-'+ s_month;
+      this.showChart = true;
+      this.getStatis();
+    },
     /**
      * [getStatis 取得总行程数目数据。]
      */
@@ -83,7 +101,7 @@ export default {
           // console.log(res);
           if (res.data.code === 0) {
             let data = res.data.data;
-            this.statis.people = parseFloat(data.sumtrip);
+            this.statis.trip_pt = parseFloat(data.sumtrip) * 2;
             // this.statis.carbon = data.sumtrip *7.6*2.3/10 ;
             this.statis.carbon = data.sumtrip * 7 * 0.0627;
           }
@@ -93,34 +111,38 @@ export default {
     /**
      * 显示筛选抽屉
      */
-    showFilterBox(){
+    showFilterBox() {
       this.$refs.drawerBox.toggle(1);
     },
     /**
      * 隐藏筛选抽屉
      */
-    hideFilterBox (){
+    hideFilterBox() {
       this.$refs.drawerBox.toggle(0);
     },
     /**
      * 确认抽屉
      */
-    confirmFilterBox(data){
-      this.filterData = Object.assign({},data);
+    confirmFilterBox(data) {
+      this.showChart = false;
+      this.filterData = Object.assign({}, data);
       this.hideFilterBox();
+      // this.$refs.chartBox.init();
+      setTimeout(() => {
+        this.showChart = true;
+      }, 100);
     },
     /**
      * 关闭或打开Drawer时
      */
-    drawerChange (vis){
+    drawerChange(vis) {
       this.is_showFilter = vis;
     }
   },
 
   created() {},
   mounted() {
-    this.getStatis();
-
+    this.init();
   },
   activated() {}
 };
@@ -132,16 +154,21 @@ export default {
   background: rgba(255, 255, 255, 0.9);
   height: 100%;
 }
-.btn-filter-bar{
+.btn-filter-bar {
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   padding: 4px 12px 2px;
   line-height: 22px;
-  background:#f0f0f0;
+  background: #f0f0f0;
   label {
-    color: #888; 
+    color: #888;
     font-weight: 400;
-    i { margin-left: 4px; font-size: 22px; float:right; color:#bbb}
+    i {
+      margin-left: 4px;
+      font-size: 22px;
+      float: right;
+      color: #bbb;
+    }
   }
 }
 </style>
