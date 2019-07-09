@@ -28,16 +28,7 @@ Vue.use(LoadingPlugin)
 
 // Vue.config.productionTip = false
 
-/*
-axios.interceptors.request.use(config => {
-   if(config.method  === 'post'){
-     config.data = qs.stringify(config.data);
-   }
-   config.headers['X-Requested-With'] = 'XMLHttpRequest'
-  return config
-},error =>{
-    return Promise.reject(error)
-})*/
+
 Vue.prototype.$http = axios;
 
 /* eslint-disable no-new */

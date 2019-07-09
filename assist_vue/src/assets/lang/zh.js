@@ -16,6 +16,7 @@ export default  {
     "cancel": "取消",
     "ok": "确认",
     "filter": "筛选",
+    'refresh':'刷新',
     
 
     //invitation

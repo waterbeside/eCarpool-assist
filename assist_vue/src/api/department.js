@@ -9,7 +9,7 @@ export default {
     }
     return new Promise((resole,reject)=>{
       axios({
-        url: configs.baseUrl_8082+'/api/v1/department/selects',
+        url: configs.apiBaseUrl+'/api/v1/department/selects',
         method: 'get',
         params
       }).then(res=>{

@@ -16,6 +16,8 @@ export default  {
     "cancel": "Cancel",
     "ok": "OK",
     "filter": "Bộ lọc",
+    'refresh':'Làm mới',
+
 
     //invitation
     "invitation":{

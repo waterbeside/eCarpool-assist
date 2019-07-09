@@ -15,6 +15,8 @@ export default {
     "cancel": "Cancel",
     "ok": "OK",
     "filter": "Filter",
+    'refresh':'Refresh',
+
 
 
     //invitation

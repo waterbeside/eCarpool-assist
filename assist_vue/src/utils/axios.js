@@ -1,3 +1,8 @@
+import Vue from 'vue'
+import {ToastPlugin} from 'vux'
+Vue.use(ToastPlugin)
+import i18n from '@/utils/i18n'
+
 import axios from 'axios'
 import cFuns from '@/utils/cFuns';
 
@@ -20,7 +25,7 @@ function getLanguage(){
 
 const tokenAxios = axios.create({
   // baseURL: process.env.BASE_API,
-  timeout: 15000,
+  timeout: 15 * 1000,
   transformRequest: [function (data) {
     // data = Qs.stringify(data);
     return data;
@@ -54,7 +59,7 @@ tokenAxios.interceptors.request.use(config => {
        config.data = formData
        */
    }
-   config.headers['X-Requested-With'] = 'XMLHttpRequest'
+  //  config.headers['X-Requested-With'] = 'XMLHttpRequest'
    // config.withCredentials = false
   // 下面会说在什么时候存储 token
   if(localStorage){
@@ -90,6 +95,8 @@ tokenAxios.interceptors.response.use(res =>{
     return res;
 }, error => {
     // 返回 response 里的错误信息
+    console.log(error);
+    Vue.$vux.toast.text(i18n.t('message.networkFail'));
     return Promise.reject(error)
 })
 

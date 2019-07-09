@@ -433,7 +433,9 @@ export default {
   activated (){
 
     this.link_code = this.$route.params.link_code;
-    this.$router.push({name:'login',params: {link_code: this.link_code}})
+    query = this.$route.query;
+
+    this.$router.push({name:'login',params: {link_code: this.link_code},query})
     this.getInvitation();
     // this.getCompany();
 
