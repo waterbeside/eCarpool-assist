@@ -1,112 +1,103 @@
 <template>
-  <view-box ref="viewBox" >
-
-        <div class="page-view-content">
-          <div  class="container" v-if="id">
-            <article class="cp-article" v-html="content"></article>
-          </div>
-          <!-- <div class="test">
-            <p> {{lang}} </p>
-            <p> {{lang2}} </p>
-          </div> -->
+  <view-box ref="viewBox">
+    <div class="page-view-content">
+      <div class="container" v-if="id">
+        <article class="cp-article" v-html="content" v-show="!isShowError"></article>
+        <div class="error-text" v-show="isShowError">
+          <p>{{$t('message.networkFail')}}</p>
+          <a class="btn-refresh btn btn-default" @click="getData">{{$t('message.refresh')}}</a>
         </div>
-
-   </view-box>
-
+      </div>
+    </div>
+  </view-box>
 </template>
 
 <script>
-import config from '@/configs'
-import cFuns from '@/utils/cFuns'
+import config from "@/configs";
+import cFuns from "@/utils/cFuns";
+import docApi from "@/api/doc";
 
 export default {
-  components: {
+  components: {},
 
-
-  },
-
-  data () {
+  data() {
     return {
-      id:0,
-      title:'',
-      content:'<i class="fa fa-spinner fa-spin"></i>',
-      lang : "-",
-      lang2 : "-",
-      paramLang:null,
-    }
+      id: 0,
+      title: "",
+      content: '<i class="fa fa-spinner fa-spin"></i>',
+      lang: "-",
+      lang2: "-",
+      paramLang: null,
+      isShowError: false
+    };
   },
-  computed : {
-
-
-  },
-  methods :{
-    init (){
+  computed: {},
+  methods: {
+    init() {
       this.paramLang = this.$store.state.paramLang;
-      var lang = this.paramLang ? this.paramLang :cFuns.getLanguage();
+      var lang = this.paramLang ? this.paramLang : cFuns.getLanguage();
       this.lang = lang;
-      this.content = '<div style="text-align:center; margin-top:30px; font-size:20px">\
+      this.content =
+        '<div style="text-align:center; margin-top:30px; font-size:20px">\
       <i class="fa fa-spinner fa-spin"></i>\
-      </div>'
-      this.title = ''
+      </div>';
+      this.title = "";
       this.id = this.$route.params.id ? this.$route.params.id : 0;
-      var cacheKey = "carpool.doc."+this.id+"."+lang;
-      // var data =  sessionStorage ? sessionStorage.getItem(cacheKey) : false;
-      // if(data){
-      //   this.content = data;
-      // }else{
-        this.getData().then(res=>{
-          if(sessionStorage) sessionStorage.setItem(cacheKey,this.content);
-        });
-      // }
+      this.getData();
     },
-    getData (){
-      var url = this.paramLang ? config.urls.docs+"/"+this.id+"?_language="+this.paramLang :  config.urls.docs+"/"+this.id;
-      return new Promise((resolve,reject)=>{
-        this.$http.get(url).then(res=>{
-          if(res.data.code === 0){
-            let data = res.data.data;
-            this.title = data.title;
-            document.title = this.title;
-            this.content = data.content;
-            resolve(res);
-          }
-        }).catch(error=>{
-          this.$vux.toast.text(this.$t("message.networkFail"));
+    getData() {
+      let param = this.paramLang ? { _language: this.paramLang } : null;
+      let cacheKey = "carpool:doc:" + this.id + ":" + this.paramLang;
+      this.$vux.loading.show();
+
+      docApi
+        .getDetail(this.id, param, { cacheKey: false, exp: 60 * 30 })
+        .then(res => {
+          this.title = res.title;
+          document.title = this.title;
+          this.content = res.content;
+          setTimeout(() => {
+            this.isShowError = false;
+            this.$vux.loading.hide();
+          }, 300);
         })
-      })
-
+        .catch(err => {
+          this.$vux.loading.hide();
+          this.isShowError = true;
+        });
     }
-
-
-
   },
 
-  created () {
-
-  },
-  activated (){
+  created() {},
+  activated() {
     // this.lang2 = localStorage ? localStorage.getItem('language') : "";
-    this.init();
-
-
+    setTimeout(() => {
+      this.init();
+    }, 100);
   }
-}
-
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style  lang="less" scoped>
-h1 { font-size: 20px; text-align: center; margin-bottom: 20px;}
+h1 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
 .cp-article {
   padding-top: 20px;
   font-size: 14px;
-  color:rgb(86, 116, 129);
+  color: rgb(86, 116, 129);
 }
-.test {color:#aaa}
-@media (min-width: 768px){
-
-
+.test {
+  color: #aaa;
+}
+.error-text {
+  text-align: center;
+}
+@media (min-width: 768px) {
 }
 </style>
