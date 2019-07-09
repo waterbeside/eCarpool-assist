@@ -14,7 +14,7 @@
       </div>
       <div class="comment-list">
           <comments-item
-            v-for="(item,index) in listData"
+            v-for="(item) in listData"
             :key="item.id"
             :name="item.name"
             :time="item.post_time"
