@@ -56,10 +56,11 @@ const routes = [
     path: '/login/:link_code',
     name: 'login',
     component (resolve) {
-      require(['../pages/login'], resolve)
+      require(['../pages/login2'], resolve)
     },
     meta: {keepAlive: true }
   },
+  
 ]
 
 let router = new VueRouter({
