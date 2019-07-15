@@ -25,7 +25,7 @@ function getLanguage(){
 
 const tokenAxios = axios.create({
   // baseURL: process.env.BASE_API,
-  timeout: 15 * 1000,
+  timeout: 30 * 1000,
   transformRequest: [function (data) {
     // data = Qs.stringify(data);
     return data;
