@@ -226,6 +226,12 @@ export default {
 
   },
   methods :{
+    init (){
+      this.link_code = this.$route.params.link_code;
+      let query = this.$route.query;
+      this.$router.push({name:'login',params: {link_code: this.link_code},query})
+      this.getInvitation();
+    },
     resetError (){
         this.iconType = ''
         this.isShowError = false;
@@ -428,16 +434,14 @@ export default {
   },
 
   created () {
+    console.log(1)
+     this.init();
 
   },
   activated (){
+    // console.log(2)
+    //  this.init();
 
-    this.link_code = this.$route.params.link_code;
-    query = this.$route.query;
-
-    this.$router.push({name:'login',params: {link_code: this.link_code},query})
-    this.getInvitation();
-    // this.getCompany();
 
   }
 }
@@ -446,5 +450,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style  lang="less">
-
 </style>
