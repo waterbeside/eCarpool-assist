@@ -26,6 +26,11 @@ export default  {
       "DownloadAppToCarpool":"快来下载APP，来免费拼车吧",
       "WelcomeToJoin":"欢迎加入溢起拼车",
       "ReadAndAgreed":"已经阅读并同意",
+      "WelcomeToJoinGroup":"欢迎加入溢信群",
+      "LoginnameAccept":"在此输入你的工号即接受邀请",
+      "loseEfficacy":"该邀请已失效",
+      "DownloadBtn":"下载《溢起拼车》",
+      "JoinSuccessful":"加入成功",
     },
 
     //user

@@ -26,7 +26,11 @@ export default  {
       "DownloadAppToCarpool":"Come and download the app and come to the free carpool",
       "WelcomeToJoin":"Welcome to join the Esquel carpool",
       "ReadAndAgreed":"Đã đọc và đồng ý",
-      
+      "WelcomeToJoinGroup":"Welcome to join the echat's group",
+      "LoginnameAccept":"Nhập số nhân viên của bạn vào đây để chấp nhận lời mời",
+      "loseEfficacy":"Lời mời đã hết hạn",
+      "DownloadBtn":"Download Bikepool",
+      "JoinSuccessful":"Tham gia thành công",
     },
 
     //user

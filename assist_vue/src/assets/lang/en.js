@@ -26,7 +26,11 @@ export default {
       "DownloadAppToCarpool": "Come and download the app and come to the free carpool",
       "WelcomeToJoin": "Welcome to join the Esquel carpool",
       "ReadAndAgreed": "Already read and agreed",
-
+      "WelcomeToJoinGroup":"Welcome to join the echat's group",
+      "LoginnameAccept":"Enter your employee ID here to accept the invitation",
+      "loseEfficacy":"The invitation has expired",
+      "DownloadBtn":"Download Carpool",
+      "JoinSuccessful":"Joined successfully",
     },
 
 
