@@ -15,17 +15,7 @@
             <h4>{{$t('message.invitation.InvitingToGroup')}}</h4>
             <h5>{{$t('message.invitation.SignInAccept')}}</h5>
           </div>
-          <msg
-            :title="$t('message.invitation.WelcomeToJoin')"
-            :description="$t('message.invitation.DownloadAppToCarpool')"
-            icon
-            v-show="step==1 && status == 1"
-          ></msg>
-          <div v-show="step==1 && !status" class="text-center">
-            <h3>{{$t('message.invitation.WelcomeToJoin')}}</h3>
-            <p class="text-center">{{$t('message.invitation.DownloadAppToCarpool')}}</p>
-          </div>
-
+        
           <form class="form form-login form-horizontal" method="post" onsubmit="return false">
             <!-- step:0 -->
             <div class="cp-step-item cp-step-item-0" v-show="step==0">
@@ -60,57 +50,14 @@
                   @blur="isFocus.password=false"
                 />
               </div>
-
-              <div class="cp-tips-disclaimer">
-                <check-icon
-                  :value.sync="agree"
-                  type="plain"
-                >{{$t('message.invitation.ReadAndAgreed')}}</check-icon>
-                <a
-                  class="cp-disclaimer-link"
-                  @click.prevent="showDisclaimer"
-                >《{{$t('message.Disclaimer')}}》</a>
-
-                <!-- <input type="checkbox" name="agree_disclaimer" id="agree_disclaimer" v-model="agree"><label class="label-checkbox" for="agree_disclaimer">已经阅读并同意<a href="">《使用协议》</a></label> -->
-              </div>
+              <disclaimer-btn :isChecked.sync="agree"/>
+             
             </div>
             <!-- /step:0 -->
 
             <!-- step:1-->
             <div class="cp-step-item cp-step-item-1" v-show="step==1">
-              <div class="alert alert-default">
-                <qrcode :value="qcode_url" type="img" style=" text-align:center" :size="120"></qrcode>
-              </div>
-              <template v-if="is_overseas == 1">
-                <p>
-                  <a class="btn btn-primary btn-block btn-lg" href="http://gitsite.net:8082/index/download/carpool?platform=2&type=2" >
-                    <i class="fa fa-android" style="float:left; margin-top:2px"></i> Android
-                  </a>
-                </p>
-                <p>
-                  <a class="btn btn-primary btn-block btn-lg" href="https://play.google.com/store/apps/details?id=com.esquel.carpool" >
-                    <i class="fa fa-android" style="float:left; margin-top:2px"></i> Google Play
-                  </a>
-                </p>
-              
-
-              </template>
-              <template v-else>
-                <p>
-                  <!-- <a class="btn btn-primary btn-block btn-lg"  href="http://m.esquel.cn/apps/gek/Carpool/downloadandroid.php" > -->
-                  <a class="btn btn-primary btn-block btn-lg" href="http://gitsite.net:8082/index/download/carpool?platform=2"  >
-                    <i class="fa fa-android" style="float:left; margin-top:2px"></i> Android
-                  </a>
-                </p>
-              </template>
-              <p>
-                <a
-                  class="btn btn-primary btn-block btn-lg"
-                  href="http://m.esquel.cn/apps/gek/Carpool/downloadios.php"
-                >
-                  <i class="fa fa-apple" style="float:left;margin-top:2px"></i> iOS
-                </a>
-              </p>
+              <join-success :is_overseas="is_overseas" :status="status"/>
             </div>
             <!-- /step:1 -->
 
@@ -131,39 +78,20 @@
       </div>
     </div>
     <div>
-      <popup v-model="isShowDisclaimer" is-transparent>
-        <div
-          style="width: 94%; max-width:640px;height:96%; background-color:#fff; margin:16px auto;border-radius:5px; "
-        >
-          <div style="position:relative;padding:10px;border-bottom:1px solid #DDD;">
-            <b>{{$t('message.Disclaimer')}}：</b>
-            <a style="padding:3px;" @click="isShowDisclaimer = false;">
-              <i class="fa fa-times pull-right"></i>
-            </a>
-          </div>
-          <div class="text-center" v-show="isLoadingDisclaimer">
-            <spinner type="dots" size="60px"></spinner>
-          </div>
-
-          <article v-html="disclaimerContent" style="padding:12px;"></article>
-
-          <div style="padding:20px 10px 10px;">
-            <button
-              class="btn btn-primary btn-block"
-              @click="isShowDisclaimer = false; agree = true;"
-            >{{$t('message.agree')}}</button>
-          </div>
-        </div>
-      </popup>
+      
     </div>
   </view-box>
 </template>
 
 <script>
 import config from "@/configs";
+import JoinSuccess from "./components/JoinSuccess";
+import DisclaimerBtn from "./components/DisclaimerBtn";
 
 export default {
-  components: {},
+  components: {
+    JoinSuccess,DisclaimerBtn,
+  },
 
   data() {
     return {
@@ -211,12 +139,7 @@ export default {
       }
     },
     
-    qcode_url() {
-      
-      return this.is_overseas == 1
-        ? "http://esqueler.com"
-        : "http://m.esquel.cn/apps/gek/Carpool/";
-    }
+    
   },
   methods: {
     init() {
@@ -293,29 +216,13 @@ export default {
         });
     },
 
-    /**
-     * 取得免责声明内容
-     */
-    showDisclaimer() {
-      this.isShowDisclaimer = true;
-      if (!this.isLoadedDisclaimer) {
-        this.$http.get(config.urls.getDisclaimer).then(res => {
-          if (res.data.code === 0) {
-            let data = res.data.data;
-            this.isShowDisclaimer = true;
-            this.isLoadedDisclaimer = true;
-            this.isLoadingDisclaimer = false;
-            this.disclaimerContent = data.content;
-          }
-        });
-      }
-      return false;
-    }
+   
   },
 
-  created() {},
-  activated() {
+  created() {
     
+  },
+  activated() {
     setTimeout(() => {
       this.init();
     }, 500);
