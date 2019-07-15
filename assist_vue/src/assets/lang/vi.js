@@ -31,6 +31,7 @@ export default  {
       "loseEfficacy":"Lời mời đã hết hạn",
       "DownloadBtn":"Download Bikepool",
       "JoinSuccessful":"Tham gia thành công",
+      "JoinBtn":"Tham gia",
     },
 
     //user

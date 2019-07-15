@@ -31,6 +31,7 @@ export default {
       "loseEfficacy":"The invitation has expired",
       "DownloadBtn":"Download Carpool",
       "JoinSuccessful":"Joined successfully",
+      "JoinBtn":"Join in",
     },
 
 

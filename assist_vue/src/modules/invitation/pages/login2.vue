@@ -54,7 +54,7 @@
                 v-show="step===0"
                 :disabled="!isEnableNext || isSubmiting"
                 @click="signin"
-              >{{$t('message.SignIn')}}</button>
+              >{{$t('message.invitation.JoinBtn')}}</button>
             </p>
           </form>
           <!-- <router-link  class="cp-login-btn pull-right"  :to="{ name:'register', params: {link_code: link_code} }" v-show="step==0">

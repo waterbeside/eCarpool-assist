@@ -21,16 +21,17 @@ export default  {
 
     //invitation
     "invitation":{
-      "InvitingToGroup":"正在邀请您加入溢信群",
+      "InvitingToGroup":"邀请您加入溢信群",
       "SignInAccept":"在此登入即接受邀请",
       "DownloadAppToCarpool":"快来下载APP，来免费拼车吧",
       "WelcomeToJoin":"欢迎加入溢起拼车",
       "ReadAndAgreed":"已经阅读并同意",
       "WelcomeToJoinGroup":"欢迎加入溢信群",
-      "LoginnameAccept":"在此输入你的工号即接受邀请",
+      "LoginnameAccept":"输入工号即可马上加入",
       "loseEfficacy":"该邀请已失效",
       "DownloadBtn":"下载《溢起拼车》",
       "JoinSuccessful":"加入成功",
+      "JoinBtn":"加入群聊",
     },
 
     //user
